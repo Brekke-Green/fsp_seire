@@ -2,3 +2,10 @@ node_modules/
 bundle.js*
 bundle.js.map
 /public/assets
+
+config/master.key
+
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
