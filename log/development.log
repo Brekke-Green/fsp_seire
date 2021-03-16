@@ -1,2 +1,37 @@
   [1m[35m (6385.9ms)[0m  [1m[35mCREATE DATABASE "seire_development" ENCODING = 'unicode'[0m
   ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-03-16 11:08:56 -0400
+Started GET "/" for ::1 at 2021-03-16 11:08:56 -0400
+Started GET "/" for ::1 at 2021-03-16 11:09:00 -0400
+Started GET "/" for ::1 at 2021-03-16 11:09:19 -0400
+Processing by StaticPagesController#root as HTML
+Processing by StaticPagesController#root as HTML
+Processing by StaticPagesController#root as HTML
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendering static_pages/root.html within layouts/application
+  Rendering static_pages/root.html within layouts/application
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (27.7ms)
+  Rendered static_pages/root.html within layouts/application (30.0ms)
+  Rendered static_pages/root.html within layouts/application (28.1ms)
+  Rendered static_pages/root.html within layouts/application (27.7ms)
+Started GET "/" for ::1 at 2021-03-16 11:09:24 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html within layouts/application
+  Rendered static_pages/root.html within layouts/application (0.2ms)
+Completed 200 OK in 16882ms (Views: 16881.2ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 19501ms (Views: 19149.9ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 19153ms (Views: 19152.2ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 19196ms (Views: 19194.8ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 16361ms (Views: 16360.8ms | ActiveRecord: 0.0ms)
+
+
