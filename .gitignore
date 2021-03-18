@@ -5,7 +5,7 @@ bundle.js.map
 
 config/master.key
 
-/log/*
-/tmp/*
+log/*
+tmp/*
 !/log/.keep
 !/tmp/.keep
