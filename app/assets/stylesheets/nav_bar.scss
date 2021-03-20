@@ -1,0 +1,46 @@
+main {
+    font-family: 'Open Sans', sans-serif;
+    // font-family: 'Rubik Mono One', sans-serif;
+}
+
+#app-header {
+    // display: flex;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+
+    border-bottom: 1px solid rgb(233, 232, 232);
+    width: 100%;
+    margin-right: 50px;
+}
+
+.nav-bar-container {
+    display: flex;
+    // position: ;
+    // flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 55px;
+    width: 80%;
+    position: relative;
+    color: black;
+}
+
+#nav-bar-button a {
+    display: flex;
+    background-color: white;
+    font-weight: 700;
+    color: #242428;
+    padding: 6px 16px;
+    min-height: unset;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    border-color: #dfdfe8;
+}
+
+#nav-bar-button a:hover {
+    background-color: #f0f0f5;;
+}

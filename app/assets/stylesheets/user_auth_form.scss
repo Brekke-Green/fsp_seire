@@ -1,0 +1,29 @@
+.login-form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    background: rgba(0, 0, 0, 0.75);
+    
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headerMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    background: rgba(0,0,0,0.8);
+}

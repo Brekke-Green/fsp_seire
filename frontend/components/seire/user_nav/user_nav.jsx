@@ -1,10 +1,7 @@
 import React from 'react';
-import { Link, withRouter, Redirect } from 'react-router-dom';
-import { ProtectedRoute } from '../../../util/route_util';
-import UserNavContainer from '../user_nav/user_nav_container';
+import { Link, withRouter } from 'react-router-dom';
 
-
-class NavBar extends React.Component {
+class UserNav extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -29,16 +26,12 @@ class NavBar extends React.Component {
             default:
                 break;
         }
-        return (this.props.currentUser) ? 
-        (
-            <Redirect to="/dashboard"/>
-        ): (
+        return (
             <div id='nav-bar-button'>
-                <ProtectedRoute exact path='/dashboard' component={UserNavContainer} />
-                <Link to={navLink}>{navLinkMessage}</Link>
+                <Link to={navLink}>Its working</Link>
             </div>
         )
     }
 }
 
-export default withRouter(NavBar);
+export default withRouter(UserNav);
