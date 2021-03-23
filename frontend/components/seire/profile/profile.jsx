@@ -7,7 +7,7 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <h1>boogers</h1>
+            <h1>profile/stats section</h1>
         )
     }
 }

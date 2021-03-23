@@ -36,10 +36,10 @@ const App = () => (
                 <AuthRoute exact path="/register" component={RegisterFormContainer} />
                 <AuthRoute exact path="/login" component={LogInFormContainer} />
                 <Route exact path="/" component={SplashContainer} />
-                <ProtectedRoute exact path="/dashboard" component={ProfileContainer} />
-                <ProtectedRoute exact path="/dashboard" component={WorkoutFeedContainer} />
-                <ProtectedRoute exact path="/dashboard" component={CareerInfoComponent} />
             </Switch>
+            <ProtectedRoute exact path="/dashboard" component={ProfileContainer} />
+            <ProtectedRoute exact path="/dashboard" component={WorkoutFeedContainer} />
+            <ProtectedRoute exact path="/dashboard" component={CareerInfoComponent} />
         </div>
         <Route exact path="/" component={Footer} />
     </div>
