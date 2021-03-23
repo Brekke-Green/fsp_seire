@@ -1,0 +1,15 @@
+#footer {
+    display: flex;
+    background-color: rgb(36,36,40);
+    color: white;
+    justify-content: center;
+    align-items: flex-start;
+    height: 218px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+#footer div {
+    display: flex;
+    width: 312px;
+}

@@ -28,7 +28,7 @@ class UserNav extends React.Component {
         }
         return (
             <div id='nav-bar-button'>
-                <Link to={navLink}>Its working</Link>
+                <button className="header-button-logout" onClick={this.props.logout}>Log Out</button>
             </div>
         )
     }

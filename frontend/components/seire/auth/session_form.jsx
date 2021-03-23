@@ -14,6 +14,7 @@ class SessionForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
+        this.props.history.push('/dashboard');
     }
 
     update(field) {
@@ -32,6 +33,10 @@ class SessionForm extends React.Component {
                 ))}
             </ul>
         );
+    }
+
+    componentWillUnmount(){
+        this.props.clearErrors();
     }
 
     render () {

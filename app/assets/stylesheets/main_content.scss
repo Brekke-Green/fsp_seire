@@ -1,0 +1,15 @@
+.main-content {
+    display: flex;
+    height: 582px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.splash-page-content {
+    display: flex;
+    // width: 940px;
+    justify-content: center;
+    flex-direction: column;
+}
