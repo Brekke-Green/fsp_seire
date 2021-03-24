@@ -7,6 +7,11 @@
     padding-bottom: 80px;
 }
 
+.main-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
 .splash-page-content {
     display: flex;
     // width: 940px;
@@ -21,4 +26,9 @@
     background-size: contain; 
     height: 600px; 
     width: 400px; 
+
+    display: inline-block;
+    width: 100%;
+    max-width: 468px;
+    margin: 0 auto;
 }

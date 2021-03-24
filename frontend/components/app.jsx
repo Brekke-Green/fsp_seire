@@ -13,9 +13,6 @@ import WorkoutFeedContainer from './seire/workout_feed/workout_container';
 import CareerInfoComponent from './seire/career_info.jsx';
 import Footer from './seire/footer/footer';
 
-
-
-
 const App = () => (
     <div className="media">
         <Switch>
