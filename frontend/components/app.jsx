@@ -40,6 +40,7 @@ const App = () => (
             <ProtectedRoute exact path="/dashboard" component={ProfileContainer} />
             <ProtectedRoute exact path="/dashboard" component={WorkoutFeedContainer} />
             <ProtectedRoute exact path="/dashboard" component={CareerInfoComponent} />
+            {/* <ProtectedRoute exact path="/route" component={CreateRoute} /> */}
         </div>
         <Route exact path="/" component={Footer} />
     </div>

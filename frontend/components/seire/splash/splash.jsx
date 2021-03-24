@@ -17,6 +17,7 @@ class SplashComponent extends React.Component {
         return (
             <div className="splash-page-content">
                 <h1>The #2 app for runners and cyclists</h1>
+                <p className="splash-image"></p>
                 <button className='demo-user-button' type='submit' onClick={this.handleSubmitDemo}>Demo User</button>
                 <Link to="/register">Use my email</Link>
                 <h6>By signing up for Strava, you agree to the Terms of Service. View our Privacy Policy.</h6>
