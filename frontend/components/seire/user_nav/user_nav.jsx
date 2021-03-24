@@ -27,7 +27,7 @@ class UserNav extends React.Component {
                 break;
         }
         return (
-            <header id="app-header">
+            <header id="app-header-user">
                 <nav className='nav-bar-container'>
                     <Link to='/' className="logo-link">
                     <h1>SEIRE</h1>

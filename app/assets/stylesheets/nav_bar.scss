@@ -16,6 +16,21 @@ main {
     margin-right: 50px;
 }
 
+#app-header-user {
+    display: flex;
+    position: fixed;
+    background-color: white;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    justify-content: center;
+    z-index: 10;
+
+    border-bottom: 1px solid rgb(233, 232, 232);
+    width: 100%;
+    margin-right: 50px;
+}
+
 .nav-bar-container {
     display: flex;
     // position: ;
