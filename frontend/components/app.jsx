@@ -17,20 +17,13 @@ import Footer from './seire/footer/footer';
 
 
 const App = () => (
-    <div>
-        <header id="app-header">
-            <nav className='nav-bar-container'>
-                <Link to='/' className="logo-link">
-                    <h1>SEIRE</h1>
-                </Link>
-                <Switch>
-                    <AuthRoute exact path="/register" component={NavBarContainer} />
-                    <AuthRoute exact path="/login" component={NavBarContainer} />
-                    <AuthRoute exact path="/" component={NavBarContainer} />
-                </Switch>
-                <ProtectedRoute exact path='/dashboard' component={UserNavContainer} />
-            </nav>
-        </header>
+    <div className="media">
+        <Switch>
+            <AuthRoute exact path="/register" component={NavBarContainer} />
+            <AuthRoute exact path="/login" component={NavBarContainer} />
+            <AuthRoute exact path="/" component={NavBarContainer} />
+        </Switch>
+        <ProtectedRoute exact path='/dashboard' component={UserNavContainer} />
         <div className="main-content">
             <Switch>
                 <AuthRoute exact path="/register" component={RegisterFormContainer} />

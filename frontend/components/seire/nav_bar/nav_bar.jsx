@@ -33,10 +33,18 @@ class NavBar extends React.Component {
         (
             <Redirect to="/dashboard"/>
         ): (
-            <div id='nav-bar-button'>
-                <ProtectedRoute exact path='/dashboard' component={UserNavContainer} />
-                <Link to={navLink}>{navLinkMessage}</Link>
-            </div>
+            <header id="app-header">
+                <nav className='nav-bar-container'>
+                    <Link to='/' className="logo-link">
+                    <h1>SEIRE</h1>
+                    </Link>
+                    <div id='nav-bar-button'>
+                        <ProtectedRoute exact path='/dashboard' component={UserNavContainer} />
+                        <Link to={navLink}>{navLinkMessage}</Link>
+                    </div>
+                </nav>
+            </header>
+            
         )
     }
 }

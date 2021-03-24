@@ -27,9 +27,17 @@ class UserNav extends React.Component {
                 break;
         }
         return (
-            <div id='nav-bar-button'>
-                <button className="header-button-logout" onClick={this.props.logout}>Log Out</button>
-            </div>
+            <header id="app-header">
+                <nav className='nav-bar-container'>
+                    <Link to='/' className="logo-link">
+                    <h1>SEIRE</h1>
+                    </Link>
+                    <div id='nav-bar-button'>
+                        <button className="header-button-logout" onClick={this.props.logout}>Log Out</button>
+                    </div>
+                </nav>
+            </header>
+            
         )
     }
 }
