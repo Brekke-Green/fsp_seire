@@ -41,47 +41,52 @@ class SessionForm extends React.Component {
 
     render () {
         let headerMessage = "";
+        let submitMessage = "";
         switch (this.props.formType) {
             case 'signup':
                 headerMessage = "Join Seire today, it's Free.";
+                submitMessage = "Sign Up"
                 break;
             case 'login':
-                headerMessage = "Log In";   
+                headerMessage = "Log In"; 
+                submitMessage = "Log In";  
                 break;       
         };
 
         return (
-            <div className="login-form-container">
-                <form onSubmit={this.handleSubmit} className="login-form-box">
-                    <div id={`${this.props.formType}`}>
-                        <div id="headerMessage">{headerMessage}</div>
-                    </div>
-                    <div className="login-form">
-                        {this.renderErrors()}
-                        <div>
-                            <input type="text" 
-                                value={this.state.email}
-                                placeholder="Email"
-                                onChange={this.update('email')}
-                                className="login-input"
-                            />
+            <div className='main-content session-form-container'>
+                <div className="login-form-container">
+                    <form onSubmit={this.handleSubmit} className="login-form-box">
+                        <div id={`${this.props.formType}`}>
+                            <div id="header-message">{headerMessage}</div>
                         </div>
-                        <div>
-                            <input type="password" 
-                                value={this.state.password}
-                                placeholder="Password"
-                                onChange={this.update('password')}
-                                className="login-input"
-                            />
+                        <div className="login-form">
+                            {this.renderErrors()}
+                            <div className="login-input-container">
+                                <input type="text" 
+                                    value={this.state.email}
+                                    placeholder="Email"
+                                    onChange={this.update('email')}
+                                    className="login-input"
+                                />
+                            </div>
+                            <div className="login-input-container">
+                                <input type="password" 
+                                    value={this.state.password}
+                                    placeholder="Password"
+                                    onChange={this.update('password')}
+                                    className="login-input"
+                                />
+                            </div>
+                            <div className="checkbox">
+                                <label className="session-label">
+                                    <input type="checkbox" name="remember_me" id="remember_me" value="on"/> Remember me 
+                                </label>
+                            </div>
+                            <input type="submit" className="session-submit" value={submitMessage}/>
                         </div>
-                        <div className="checkbox">
-                            <label>
-                                <input type="checkbox" name="remember_me" id="remember_me" value="on"/> Remember me 
-                            </label>
-                        </div>
-                        <input type="submit" className="session-submit" value={this.props.formType}/>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         )
     }

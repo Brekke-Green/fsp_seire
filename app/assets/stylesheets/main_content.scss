@@ -2,6 +2,17 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    
+    
+}
+
+.main-content.session-form-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-image: image-url('login-bg-image.jpg');
+    background-size: cover;
+    padding: 0 0 285px 0;
 }
 
 .main-content {
@@ -9,13 +20,22 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    height: 582px;
+    min-height: 582px;
     justify-content: center;
     align-items: center;
     padding-top: 80px;
     padding-bottom: 80px;
 }
 
+.main-content .splash-page-content {
+    display: flex;
+    // width: 940px;
+    width: 100%;
+    height: 100%;
+    // background-image: image-url('login-bg-image.jpg');
+    justify-content: center;
+    flex-direction: column;
+}
 
 .main-content .splash-page-content .splash-heading {
     display: flex;
@@ -24,24 +44,17 @@
     // font-family: ;
     font-weight: 900;
     width: 100%;
+    margin-bottom: 80px;
 }
 
-.main-content .splash-page-content {
-    display: flex;
-    // width: 940px;
-    max-width: 100%;
-    max-height: 100%;
-    justify-content: center;
-    flex-direction: column;
-}
 
 .splash-image {
     background-image: image-url('splash_image.jpg');
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: contain; 
-    height: 600px; 
-    width: 400px; 
+    height: 500px; 
+    width: 100%; 
 
     display: inline-block;
     max-width: 468px;
@@ -63,7 +76,7 @@
     padding: 0 64px;
 }
 
-button {
+.main-content button {
     display: flex;
     width: 360px;
     font-size: 14px;

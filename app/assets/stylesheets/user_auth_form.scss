@@ -1,29 +1,102 @@
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
 .login-form-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 400px;
     background: rgba(0, 0, 0, 0.75);
-    
+    border: 1px solid rgba(0,0,0,0.75); 
+    border-radius: 3px;
+}
+
+#login {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.5); 
+    border-radius: 3px;
+}
+
+#signup {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.5); 
+    border-radius: 3px;
+}
+
+#header-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 34px;
+    font-weight: 700;
+    word-break: break-word;
+    line-height: 41px;
+    padding: 20px 55px;
+    text-align: center;
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px;
+    padding: 20px 50px 50px 50px;
+    width: 100%;
 }
 
-.login-form-container {
+.login-input-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 15px 0 0 0;
+    width: 75%;
 }
 
-.headerMessage {
+.login-input {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: auto;
-    background: rgba(0,0,0,0.8);
+    width: 100%;
+    padding: 10px 16px;
+    min-width: 80px;
+    border: 1px solid rgba(0,0,0,0.75); 
+    border-radius: 3px;
+}
+
+.checkbox {
+    display: flex;
+    width: 75%;
+    padding: 15px 0px;
+
+}
+
+.session-label {
+    display: flex;
+    color: white;
+    // margin: 15px;
+    // width: 75%;
+}
+
+.session-submit {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    padding: 10px;
+    background-color: rgb(252,82,0);
+    border: 1px solid rgb(252,82,0); 
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.session-submit:hover {
+    background-color: #e34a00;
+    border-color: #e34a00;
 }

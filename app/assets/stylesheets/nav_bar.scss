@@ -10,7 +10,7 @@ main {
     // left: 0;
     // right: 0;
     justify-content: center;
-
+    background-color: white;
     border-bottom: 1px solid rgb(233, 232, 232);
     width: 100%;
     margin-right: 50px;
@@ -20,9 +20,9 @@ main {
     display: flex;
     position: fixed;
     background-color: white;
-    // top: 0;
-    // left: 0;
-    // right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     justify-content: center;
     z-index: 10;
 
@@ -46,7 +46,7 @@ main {
 #nav-bar-button a {
     display: flex;
     background-color: white;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     color: #242428;
     padding: 6px 16px;
@@ -60,4 +60,24 @@ main {
 
 #nav-bar-button a:hover {
     background-color: #f0f0f5;;
+}
+
+#nav-bar-button a.Sign.Up {
+    display: flex;
+    background-color: rgb(252,82,0);
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    padding: 6px 16px;
+    min-height: unset;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    border-color: #dfdfe8;
+}
+
+#nav-bar-button a.Sign.Up:hover {
+    background-color: #cc4200;
+    border-color: #cc4200;
 }

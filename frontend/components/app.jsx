@@ -12,6 +12,7 @@ import ProfileContainer from './seire/profile/profile_container';
 import WorkoutFeedContainer from './seire/workout_feed/workout_container';
 import CareerInfoComponent from './seire/career_info.jsx';
 import Footer from './seire/footer/footer';
+import DashboardContainer from "./seire/dashboard/dashboard_container";
 
 const App = () => (
     <div className="media">
@@ -19,19 +20,23 @@ const App = () => (
             <AuthRoute exact path="/register" component={NavBarContainer} />
             <AuthRoute exact path="/login" component={NavBarContainer} />
             <AuthRoute exact path="/" component={NavBarContainer} />
+            <ProtectedRoute exact path='/dashboard' component={UserNavContainer} />
         </Switch>
-        <ProtectedRoute exact path='/dashboard' component={UserNavContainer} />
-        <div className="main-content">
+        
+        {/* <div className="main-content"> */}
             <Switch>
                 <AuthRoute exact path="/register" component={RegisterFormContainer} />
                 <AuthRoute exact path="/login" component={LogInFormContainer} />
                 <Route exact path="/" component={SplashContainer} />
             </Switch>
-            <ProtectedRoute exact path="/dashboard" component={ProfileContainer} />
+
+            <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
+
+            {/* <ProtectedRoute exact path="/dashboard" component={ProfileContainer} />
             <ProtectedRoute exact path="/dashboard" component={WorkoutFeedContainer} />
-            <ProtectedRoute exact path="/dashboard" component={CareerInfoComponent} />
+            <ProtectedRoute exact path="/dashboard" component={CareerInfoComponent} /> */}
             {/* <ProtectedRoute exact path="/route" component={CreateRoute} /> */}
-        </div>
+        {/* </div> */}
         <Route exact path="/" component={Footer} />
     </div>
 );

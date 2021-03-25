@@ -40,7 +40,7 @@ class NavBar extends React.Component {
                     </Link>
                     <div id='nav-bar-button'>
                         <ProtectedRoute exact path='/dashboard' component={UserNavContainer} />
-                        <Link to={navLink}>{navLinkMessage}</Link>
+                        <Link className={`${navLinkMessage}`} to={navLink}>{navLinkMessage}</Link>
                     </div>
                 </nav>
             </header>
