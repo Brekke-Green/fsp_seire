@@ -2,15 +2,21 @@
     display: flex;
     background-color: rgb(36,36,40);
     color: white;
-    justify-content: center;
     align-items: flex-start;
     justify-content: center;
+}
+
+#footer .footer-container {
+    display: flex;
+    
     height: 218px;
     padding-top: 64px;
     padding-bottom: 64px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#footer > div {
+#footer .footer-container > div {
     display: flex;
     width: 280px;
     padding: 0 16px 0 16px;
@@ -20,10 +26,10 @@
 
 #footer .footer-col-label {
     font-size: 10px;
+    color: grey;
     line-height: 22px;
     margin: 0 0 32px 0;
 }
-
 
 #footer .footer-div-menu ul {
     display: flex;
@@ -34,6 +40,7 @@
 
 #footer .footer-div-menu li {
     font-size: 10px;
+    line-height: 15px;
     display: flex;
     width: 50%;
     margin: 0 0 16px 0;
@@ -41,6 +48,7 @@
 
 #footer .footer-div-follow li {
     font-size: 10px;
+    line-height: 15px;
     display: flex;
     width: 50%;
     margin: 0 0 16px 0;
@@ -48,11 +56,17 @@
 
 #footer div ul li a {
     font-size: 10px;
+    line-height: 15px;
+    color: white;
     display: flex;
+}
+
+#footer .footer-div-get-started li a {
     margin: 0 0 16px 0;
 }
 
 #footer-paragraph {
     font-size: 10px;
     display: flex;
+    color: gray
 }
