@@ -23,7 +23,7 @@ class SplashComponent extends React.Component {
                         <div className="splash-content-right">
                             <button className='demo-user-button' type='submit' onClick={this.handleSubmitDemo}>Demo User</button>
                             <Link to="/register">Use my email</Link>
-                            <p className="top-p">By signing up for Strava, you agree to the Terms of Service.</p> 
+                            <p className="top-p">By signing up for Seire, you agree to the Terms of Service.</p> 
                             <p className="bottom-p">View our Privacy Policy.</p>
                             <div>
                                 <div className="login-link">Already a Member?<Link to="/login">Log in</Link></div>
