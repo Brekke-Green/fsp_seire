@@ -8,7 +8,8 @@
 
 #footer .footer-container {
     display: flex;
-    
+    justify-content: space-evenly;
+    width: 1248px;
     height: 218px;
     padding-top: 64px;
     padding-bottom: 64px;
@@ -18,7 +19,7 @@
 
 #footer .footer-container > div {
     display: flex;
-    width: 280px;
+    width: 25%;
     padding: 0 16px 0 16px;
     height: 218px;
     flex-direction: column;
