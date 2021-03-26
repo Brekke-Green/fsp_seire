@@ -2,11 +2,15 @@
 <html>
   <head>
     <title>Seire</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%# <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPBOX_API_KEY']}" %>
   </head>
 
   <body>

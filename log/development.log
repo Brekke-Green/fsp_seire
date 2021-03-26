@@ -6206,3 +6206,266 @@ Processing by Api::SessionsController#destroy as JSON
 Completed 200 OK in 68ms (Views: 0.2ms | ActiveRecord: 39.2ms)
 
 
+Started GET "/" for ::1 at 2021-03-26 03:00:44 -0400
+
+PG::ConnectionBad - could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/var/run/postgresql/.s.PGSQL.5432"?:
+
+Started POST "/__better_errors/d1fc6a97c5c68b64/variables" for ::1 at 2021-03-26 03:00:44 -0400
+Started GET "/" for ::1 at 2021-03-26 03:01:21 -0400
+  [1m[35m (29.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/brekkegreen/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (9.9ms)
+Completed 500 Internal Server Error in 108ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveSupport::MessageEncryptor::InvalidMessage - ActiveSupport::MessageEncryptor::InvalidMessage:
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__1825196940391603194_47289750463200'
+
+Started POST "/__better_errors/dbf4eb9a408a878b/variables" for ::1 at 2021-03-26 03:01:22 -0400
+Started GET "/" for ::1 at 2021-03-26 03:10:27 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveSupport::MessageEncryptor::InvalidMessage - ActiveSupport::MessageEncryptor::InvalidMessage:
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__1825196940391603194_47289749120240'
+
+Started POST "/__better_errors/53a1eb552b7fd942/variables" for ::1 at 2021-03-26 03:10:27 -0400
+Started GET "/" for ::1 at 2021-03-26 03:11:27 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 5999ms (ActiveRecord: 0.0ms)
+
+
+
+ActiveSupport::MessageEncryptor::InvalidMessage - ActiveSupport::MessageEncryptor::InvalidMessage:
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__1825196940391603194_47289746923800'
+
+Started POST "/__better_errors/764d2ba9d3c77e4d/variables" for ::1 at 2021-03-26 03:11:33 -0400
+Started GET "/" for ::1 at 2021-03-26 03:16:24 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 69ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `[]' for nil:NilClass:
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__1825196940391603194_69908988192280'
+
+Started POST "/__better_errors/141991c4fd3cc84b/variables" for ::1 at 2021-03-26 03:16:25 -0400
+Started GET "/" for ::1 at 2021-03-26 03:18:01 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `[]' for nil:NilClass:
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__1825196940391603194_69908996488720'
+
+Started POST "/__better_errors/53dd29e00a778d73/variables" for ::1 at 2021-03-26 03:18:02 -0400
+Started GET "/" for ::1 at 2021-03-26 03:18:06 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `[]' for nil:NilClass:
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__1825196940391603194_69908996079300'
+
+Started POST "/__better_errors/fe245e7a80504eb7/variables" for ::1 at 2021-03-26 03:18:06 -0400
+Started GET "/" for ::1 at 2021-03-26 03:18:14 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `[]' for nil:NilClass:
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__1825196940391603194_69908996486800'
+
+Started POST "/__better_errors/76294f04af5f0875/variables" for ::1 at 2021-03-26 03:18:14 -0400
+Started GET "/" for ::1 at 2021-03-26 03:18:17 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `[]' for nil:NilClass:
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__1825196940391603194_69909004453400'
+
+Started POST "/__better_errors/a632288f6e507db9/variables" for ::1 at 2021-03-26 03:18:17 -0400
+Started GET "/" for ::1 at 2021-03-26 03:29:21 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 663ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `[]' for nil:NilClass:
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__1825196940391603194_69909004247380'
+
+Started POST "/__better_errors/d352cec184db10fc/variables" for ::1 at 2021-03-26 03:29:22 -0400
+Started GET "/" for ::1 at 2021-03-26 03:34:21 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `[]' for nil:NilClass:
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__1825196940391603194_69908997358200'
+
+Started POST "/__better_errors/192c6ce31e7d5e18/variables" for ::1 at 2021-03-26 03:34:21 -0400
+Started GET "/" for ::1 at 2021-03-26 03:35:03 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `[]' for nil:NilClass:
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__1825196940391603194_69908996600740'
+
+Started POST "/__better_errors/92cb98d6f439a906/variables" for ::1 at 2021-03-26 03:35:03 -0400
+Started GET "/" for ::1 at 2021-03-26 03:35:06 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `[]' for nil:NilClass:
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__1825196940391603194_69908996493920'
+
+Started POST "/__better_errors/cfd468da8acd227e/variables" for ::1 at 2021-03-26 03:35:06 -0400
+Started GET "/" for ::1 at 2021-03-26 10:01:14 -0400
+  [1m[35m (26.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/brekkegreen/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 2625ms (Views: 2622.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-26 10:01:22 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo.user@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (124.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo.user@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.9ms)
+Completed 200 OK in 534ms (Views: 4.6ms | ActiveRecord: 168.8ms)
+
+
+Started GET "/" for ::1 at 2021-03-26 10:01:33 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 91ms (Views: 89.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-26 10:02:01 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo.user@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo.user@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.4ms)
+Completed 200 OK in 302ms (Views: 3.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2021-03-26 10:05:42 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 1350ms (Views: 1347.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-26 10:05:47 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo.user@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo.user@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+  Rendered api/users/show.json.jbuilder (2.3ms)
+Completed 200 OK in 314ms (Views: 4.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2021-03-26 10:06:47 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 1658ms (Views: 1656.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-26 10:06:53 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo.user@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo.user@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered api/users/show.json.jbuilder (2.4ms)
+Completed 200 OK in 463ms (Views: 4.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2021-03-26 10:07:27 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 966ms (Views: 965.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-26 10:07:33 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo.user@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo.user@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.9ms)
+Completed 200 OK in 294ms (Views: 3.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2021-03-26 10:08:42 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 2030ms (Views: 2028.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-03-26 10:08:49 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo.user@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo.user@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered api/users/show.json.jbuilder (1.8ms)
+Completed 200 OK in 302ms (Views: 3.5ms | ActiveRecord: 0.5ms)
+
+
