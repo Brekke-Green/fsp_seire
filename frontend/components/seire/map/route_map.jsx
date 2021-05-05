@@ -20,6 +20,7 @@ class Map extends React.PureComponent {
             zoom: 15
         };
         this.mapContainer = React.createRef();
+        this.waypoints = turf.featureCollection([]);
     }
 
     componentDidMount() {
@@ -29,6 +30,43 @@ class Map extends React.PureComponent {
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
             zoom: zoom
+        });
+
+        map.on('load', () => {
+            map.addLayer({
+                id: 'waypoint-symbol',
+                type: 'symbol',
+                source: {
+                  data: waypoints,
+                  type: 'geojson'
+                },
+                layout: {
+                  'icon-allow-overlap': true,
+                  'icon-ignore-placement': true,
+                  'icon-image': 'marker-15',
+                }               
+            });
+        });
+
+        function newWaypoint(coords) {
+            var pt = turf.point(
+                [coords.lng, coords.lat],
+                {
+                    setTime: Date.now(),
+                    key: Math.random()
+                }
+            );
+            this.waypoints.features.push(pt);
+        }
+
+        function updateWaypoints(geojson) {
+            map.getSource('waypoints-symbol')
+            .setData(geojson);
+        }
+
+        map.on('click', function(e) {
+            newWaypoint(map.unproject(e.point));
+            updateWaypoints(waypoints);
         });
 
         map.on('move', () => {
