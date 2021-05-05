@@ -21,9 +21,26 @@ class Map extends React.PureComponent {
         };
         this.mapContainer = React.createRef();
         this.waypoints = turf.featureCollection([]);
+        this.nothing = turf.featureCollection([]);
+        this.newWaypoint = this.newWaypoint.bind(this);
+        this.updateWaypoints = this.updateWaypoints.bind(this);
+        this.buildMap = this.buildMap.bind(this);
+
+        this.lastQueryTime = 0;
+        this.lastAtWaypoint = 0;
+        this.keepTrack = [];
+        this.currentSchedule = [];
+        this.currentRoute = null;
+        this.pointHopper = {};
+        this.pause = true;
+        this.speedFactor = 50;
     }
 
     componentDidMount() {
+        this.buildMap();
+    }
+
+    buildMap() {
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
@@ -37,7 +54,7 @@ class Map extends React.PureComponent {
                 id: 'waypoint-symbol',
                 type: 'symbol',
                 source: {
-                  data: waypoints,
+                  data: this.waypoints,
                   type: 'geojson'
                 },
                 layout: {
@@ -46,27 +63,36 @@ class Map extends React.PureComponent {
                   'icon-image': 'marker-15',
                 }               
             });
+
+            map.addSource('route', {
+                type: 'geojson',
+                data: this.nothing
+            });
+            
+            map.addLayer({
+                id: 'routeline-active',
+                type: 'line',
+                source: 'route',
+                layout: {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                paint: {
+                    'line-color': '#3887be',
+                    'line-width': [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    12, 3,
+                    22, 12
+                    ]
+                }
+            }, 'waterway-label');
         });
 
-        function newWaypoint(coords) {
-            var pt = turf.point(
-                [coords.lng, coords.lat],
-                {
-                    setTime: Date.now(),
-                    key: Math.random()
-                }
-            );
-            this.waypoints.features.push(pt);
-        }
-
-        function updateWaypoints(geojson) {
-            map.getSource('waypoints-symbol')
-            .setData(geojson);
-        }
-
         map.on('click', function(e) {
-            newWaypoint(map.unproject(e.point));
-            updateWaypoints(waypoints);
+            this.newWaypoint(map.unproject(e.point));
+            this.updateWaypoints(waypoints);
         });
 
         map.on('move', () => {
@@ -76,6 +102,88 @@ class Map extends React.PureComponent {
                 zoom: map.getZoom().toFixed(2)
             });
         });
+    }
+
+    newWaypoint(coords) {
+        var pt = turf.point(
+            [coords.lng, coords.lat],
+            {
+                setTime: Date.now(),
+                key: Math.random()
+            }
+        );
+        this.waypoints.features.push(pt);
+        pointHopper[pt.properties.key] = pt;
+
+        // Make a request to the Optimization API
+        $.ajax({
+            method: 'GET',
+            url: this.assembleQueryURL()
+            }).done(function (data) {
+            // Create a GeoJSON feature collection
+            let routeGeoJSON = turf.featureCollection([
+            turf.feature(data.trips[0].geometry)
+            ]);
+                
+            // If there is no route provided, reset
+            if (!data.trips[0]) {
+                routeGeoJSON = nothing;
+            } else {
+            // Update the `route` source by getting the route source
+            // and setting the data equal to routeGeoJSON
+            map.getSource('route').setData(routeGeoJSON);
+            }
+                
+            //
+            if (data.waypoints.length === 12) {
+                window.alert(
+                'Maximum number of points reached. Read more at docs.mapbox.com/api/navigation/#optimization.'
+                );
+            }
+        });
+    };
+
+    updateWaypoints(geojson) {
+        map.getSource('waypoints-symbol')
+        .setData(geojson);
+
+        // Here you'll specify all the parameters necessary for requesting a response from the Optimization API
+        function assembleQueryURL() {
+        // Store the location of the truck in a variable called coordinates
+        let coordinates = [];
+        let distributions = [];
+        
+        // Create an array of GeoJSON feature collections for each point
+        let restWaypoints = objectToArray(pointHopper);
+        this.keepTrack = [restWaypoints[0]];
+
+        // If there are any orders from this restaurant
+        if (restWaypoints.length > 0) {
+
+            restWaypoints.forEach(function(d, i) {
+                keepTrack.push(d);
+                coordinates.push(d.geometry.coordinates);
+                // if order not yet picked up, add a reroute
+                if (needToPickUp && d.properties.orderTime > this.lastAtWaypoint) {
+                    distributions.push(restaurantIndex + ',' + (coordinates.length - 1));
+                }
+            });
+        }
+
+        // Set the profile to `driving`
+        // Coordinates will include the current location of the truck,
+        return 'https://api.mapbox.com/optimized-trips/v1/mapbox/walking/' + coordinates.join(';') + '?distributions=' + distributions.join(';') + '&overview=full&steps=true&geometries=geojson&source=first&access_token=' + mapboxgl.accessToken;
+        }
+    }
+
+    
+
+    objectToArray(obj) {
+        let keys = Object.keys(obj);
+        let routeGeoJSON = keys.map(function(key) {
+            return obj[key];
+        });
+        return routeGeoJSON;
     }
 
     render() {
