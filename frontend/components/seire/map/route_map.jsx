@@ -47,7 +47,7 @@ class Map extends React.PureComponent {
                 <div className="sidebar">
                     Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
                 </div>
-                <div ref={this.mapContainer} className="map-container" />
+                <div ref={this.mapContainer} className="map-container" style={{width:'80%', height:'90vh'}}/>
             </div>
         );
     }
