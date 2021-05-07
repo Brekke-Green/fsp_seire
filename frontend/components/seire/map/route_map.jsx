@@ -6,8 +6,6 @@ import MapboxDraw from "@mapbox/mapbox-gl-draw";
 mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken = 'pk.eyJ1IjoiYnJla2tlZ3JlZW4iLCJhIjoiY2tiemRjMDJ5MHFmdTJzcGp2ODNrd214ciJ9.lP6rEXwmx61SO2M0u3pgUQ';
 
-
-
 // Brekke, NO 61.01, 05.27
 // Central Park 40, -73.9666216124702
 
@@ -17,15 +15,17 @@ class Map extends React.PureComponent {
         this.state = {
             lng: -73.9666,
             lat: 40.7810,
-            zoom: 15
+            zoom: 15,
+            roundtrip: 'false'
         };
         this.mapContainer = React.createRef();
         this.waypoints = turf.featureCollection([]);
         this.nothing = turf.featureCollection([]);
         this.newWaypoint = this.newWaypoint.bind(this);
         this.updateWaypoints = this.updateWaypoints.bind(this);
-        this.buildMap = this.buildMap.bind(this);
-
+        this.assembleQueryURL = this.assembleQueryURL.bind(this);
+        this.handleRouteType = this.handleRouteType.bind(this);
+    
         this.lastQueryTime = 0;
         this.lastAtWaypoint = 0;
         this.keepTrack = [];
@@ -37,10 +37,7 @@ class Map extends React.PureComponent {
     }
 
     componentDidMount() {
-        this.buildMap();
-    }
-
-    buildMap() {
+        let that = this;
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
@@ -48,6 +45,8 @@ class Map extends React.PureComponent {
             center: [lng, lat],
             zoom: zoom
         });
+
+        this.map = map;
 
         map.on('load', () => {
             map.addLayer({
@@ -91,8 +90,8 @@ class Map extends React.PureComponent {
         });
 
         map.on('click', function(e) {
-            this.newWaypoint(map.unproject(e.point));
-            this.updateWaypoints(waypoints);
+            that.newWaypoint(map.unproject(e.point));
+            that.updateWaypoints(that.waypoints);
         });
 
         map.on('move', () => {
@@ -105,6 +104,9 @@ class Map extends React.PureComponent {
     }
 
     newWaypoint(coords) {
+
+        let that = this;
+
         var pt = turf.point(
             [coords.lng, coords.lat],
             {
@@ -113,8 +115,9 @@ class Map extends React.PureComponent {
             }
         );
         this.waypoints.features.push(pt);
-        pointHopper[pt.properties.key] = pt;
+        this.pointHopper[pt.properties.key] = pt;
 
+        
         // Make a request to the Optimization API
         $.ajax({
             method: 'GET',
@@ -131,53 +134,61 @@ class Map extends React.PureComponent {
             } else {
             // Update the `route` source by getting the route source
             // and setting the data equal to routeGeoJSON
-            map.getSource('route').setData(routeGeoJSON);
+            that.map.getSource('route').setData(routeGeoJSON);
             }
                 
             //
             if (data.waypoints.length === 12) {
                 window.alert(
-                'Maximum number of points reached. Read more at docs.mapbox.com/api/navigation/#optimization.'
+                'Maximum number of points reached!'
                 );
             }
         });
     };
 
     updateWaypoints(geojson) {
-        map.getSource('waypoints-symbol')
-        .setData(geojson);
+        let that = this;
+        that.map.getSource('waypoints-symbol').setData(geojson);
 
-        // Here you'll specify all the parameters necessary for requesting a response from the Optimization API
-        function assembleQueryURL() {
+        return this.assembleQueryURL();
+    };
+
+    assembleQueryURL() {
+
+        let that = this;
+
+        function objectToArray(obj) {
+            var keys = Object.keys(obj);
+            var routeGeoJSON = keys.map(function(key) {
+                return obj[key];
+            });
+            return routeGeoJSON;
+        }
+
         // Store the location of the truck in a variable called coordinates
         let coordinates = [];
         let distributions = [];
+        let roundtrip = this.state.roundtrip;
         
         // Create an array of GeoJSON feature collections for each point
-        let restWaypoints = objectToArray(pointHopper);
+        let restWaypoints = objectToArray(this.pointHopper);
         this.keepTrack = [restWaypoints[0]];
 
         // If there are any orders from this restaurant
         if (restWaypoints.length > 0) {
 
             restWaypoints.forEach(function(d, i) {
-                keepTrack.push(d);
+                that.keepTrack.push(d);
                 coordinates.push(d.geometry.coordinates);
                 // if order not yet picked up, add a reroute
-                if (needToPickUp && d.properties.orderTime > this.lastAtWaypoint) {
-                    distributions.push(restaurantIndex + ',' + (coordinates.length - 1));
-                }
             });
         }
 
         // Set the profile to `driving`
         // Coordinates will include the current location of the truck,
-        return 'https://api.mapbox.com/optimized-trips/v1/mapbox/walking/' + coordinates.join(';') + '?distributions=' + distributions.join(';') + '&overview=full&steps=true&geometries=geojson&source=first&access_token=' + mapboxgl.accessToken;
-        }
+        return 'https://api.mapbox.com/optimized-trips/v1/mapbox/walking/' + coordinates.join(';') + '?distributions=' + distributions.join(';') + '&overview=full&steps=true&geometries=geojson&source=first&destination=last' + '&roundtrip=' + roundtrip + '&access_token=' + mapboxgl.accessToken;
     }
-
     
-
     objectToArray(obj) {
         let keys = Object.keys(obj);
         let routeGeoJSON = keys.map(function(key) {
@@ -186,12 +197,22 @@ class Map extends React.PureComponent {
         return routeGeoJSON;
     }
 
+    handleRouteType() {
+        if (this.state.roundtrip === 'true') {
+            this.setState(() => ({roundtrip: 'false'}));
+        } else {
+            this.setState(() => ({roundtrip: 'true'}));
+        }
+    }
+
     render() {
         const { lng, lat, zoom } = this.state;
+
         return (
             <div>
                 <div className="sidebar">
-                    Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+                    Longitude: {lng} | Latitude: {lat} | Zoom: {zoom} | 
+                    <button onClick={this.handleRouteType}>{this.state.roundtrip === 'true' ? "One-way" : "Loop"}</button>
                 </div>
                 <div ref={this.mapContainer} className="map-container" style={{width:'80%', height:'90vh'}}/>
             </div>
