@@ -103,6 +103,36 @@ class Map extends React.PureComponent {
         });
     }
 
+    componentDidUpdate() {
+        let that = this;
+
+        $.ajax({
+            method: 'GET',
+            url: this.assembleQueryURL()
+            }).done(function (data) {
+            // Create a GeoJSON feature collection
+            let routeGeoJSON = turf.featureCollection([
+            turf.feature(data.trips[0].geometry)
+            ]);
+                
+            // If there is no route provided, reset
+            if (!data.trips[0]) {
+                routeGeoJSON = nothing;
+            } else {
+            // Update the `route` source by getting the route source
+            // and setting the data equal to routeGeoJSON
+            that.map.getSource('route').setData(routeGeoJSON);
+            }
+                
+            //
+            // if (data.waypoints.length === 12) {
+            //     window.alert(
+            //     'Maximum number of points reached!'
+            //     );
+            // }
+        });
+    }
+
     newWaypoint(coords) {
 
         let that = this;
@@ -199,10 +229,11 @@ class Map extends React.PureComponent {
 
     handleRouteType() {
         if (this.state.roundtrip === 'true') {
-            this.setState(() => ({roundtrip: 'false'}));
+            this.setState((state) => ({roundtrip: 'false'}));
         } else {
-            this.setState(() => ({roundtrip: 'true'}));
+            this.setState((state) => ({roundtrip: 'true'}));
         }
+        this.componentDidUpdate();
     }
 
     render() {
