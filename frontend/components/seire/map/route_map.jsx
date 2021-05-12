@@ -240,6 +240,7 @@ class Map extends React.PureComponent {
     }
 
     handleRouteType() {
+        
         if (this.state.roundtrip === 'true') {
             this.setState((state) => ({roundtrip: 'false'}));
         } else {
