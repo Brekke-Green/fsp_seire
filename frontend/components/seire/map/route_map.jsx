@@ -16,7 +16,8 @@ class Map extends React.PureComponent {
             lng: -73.9666,
             lat: 40.7810,
             zoom: 15,
-            roundtrip: 'false'
+            roundtrip: 'false',
+            routeName: 'Route Name'
         };
         this.mapContainer = React.createRef();
         this.waypoints = turf.featureCollection([]);
@@ -25,6 +26,9 @@ class Map extends React.PureComponent {
         this.updateWaypoints = this.updateWaypoints.bind(this);
         this.assembleQueryURL = this.assembleQueryURL.bind(this);
         this.handleRouteType = this.handleRouteType.bind(this);
+        this.handleCreateRoute = this.handleCreateRoute.bind(this);
+        this.handleCreateRouteChange = this.handleCreateRouteChange.bind(this);
+
     
         this.lastQueryTime = 0;
         this.lastAtWaypoint = 0;
@@ -89,9 +93,13 @@ class Map extends React.PureComponent {
             }, 'waterway-label');
         });
 
+        console.log(that.waypoints);
+
         map.on('click', function(e) {
-            that.newWaypoint(map.unproject(e.point));
-            that.updateWaypoints(that.waypoints);
+            if (that.waypoints.features.length <= 11) {
+                that.newWaypoint(map.unproject(e.point));
+                that.updateWaypoints(that.waypoints);
+            }
         });
 
         map.on('move', () => {
@@ -103,34 +111,37 @@ class Map extends React.PureComponent {
         });
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevState) {
         let that = this;
 
-        $.ajax({
-            method: 'GET',
-            url: this.assembleQueryURL()
-            }).done(function (data) {
-            // Create a GeoJSON feature collection
-            let routeGeoJSON = turf.featureCollection([
-            turf.feature(data.trips[0].geometry)
-            ]);
-                
-            // If there is no route provided, reset
-            if (!data.trips[0]) {
-                routeGeoJSON = nothing;
-            } else {
-            // Update the `route` source by getting the route source
-            // and setting the data equal to routeGeoJSON
-            that.map.getSource('route').setData(routeGeoJSON);
-            }
-                
-            //
-            // if (data.waypoints.length === 12) {
-            //     window.alert(
-            //     'Maximum number of points reached!'
-            //     );
-            // }
-        });
+
+        if (prevState.roundtrip !== that.state.roundtrip) {
+            $.ajax({
+                method: 'GET',
+                url: this.assembleQueryURL()
+                }).done(function (data) {
+                // Create a GeoJSON feature collection
+                let routeGeoJSON = turf.featureCollection([
+                turf.feature(data.routes[0].geometry)
+                ]);
+                    
+                // If there is no route provided, reset
+                if (!data.routes[0]) {
+                    routeGeoJSON = nothing;
+                } else {
+                // Update the `route` source by getting the route source
+                // and setting the data equal to routeGeoJSON
+                that.map.getSource('route').setData(routeGeoJSON);
+                }
+                    
+                //
+                // if (data.waypoints.length === 12) {
+                //     window.alert(
+                //     'Maximum number of points reached!'
+                //     );
+                // }
+            });
+        }
     }
 
     newWaypoint(coords) {
@@ -155,11 +166,11 @@ class Map extends React.PureComponent {
             }).done(function (data) {
             // Create a GeoJSON feature collection
             let routeGeoJSON = turf.featureCollection([
-            turf.feature(data.trips[0].geometry)
+            turf.feature(data.routes[0].geometry)
             ]);
                 
             // If there is no route provided, reset
-            if (!data.trips[0]) {
+            if (!data.routes[0]) {
                 routeGeoJSON = nothing;
             } else {
             // Update the `route` source by getting the route source
@@ -216,7 +227,8 @@ class Map extends React.PureComponent {
 
         // Set the profile to `driving`
         // Coordinates will include the current location of the truck,
-        return 'https://api.mapbox.com/optimized-trips/v1/mapbox/walking/' + coordinates.join(';') + '?distributions=' + distributions.join(';') + '&overview=full&steps=true&geometries=geojson&source=first&destination=last' + '&roundtrip=' + roundtrip + '&access_token=' + mapboxgl.accessToken;
+        // return 'https://api.mapbox.com/optimized-trips/v1/mapbox/walking/' + coordinates.join(';') + '?distributions=' + distributions.join(';') + '&overview=full&steps=true&geometries=geojson&source=first&destination=last' + '&roundtrip=' + roundtrip + '&access_token=' + mapboxgl.accessToken;
+        return 'https://api.mapbox.com/directions/v5/mapbox/walking/' + coordinates.join(';') + '?overview=full&steps=true&geometries=geojson' + '&access_token=' + mapboxgl.accessToken;
     }
     
     objectToArray(obj) {
@@ -233,7 +245,16 @@ class Map extends React.PureComponent {
         } else {
             this.setState((state) => ({roundtrip: 'true'}));
         }
-        this.componentDidUpdate();
+        this.componentDidUpdate(this.state);
+    }
+
+    handleCreateRouteChange(e) {
+        console.log(this);
+        this.setState({routeName: e.target.value});
+    }
+    
+    handleCreateRoute(e) {
+        e.preventDefault();
     }
 
     render() {
@@ -244,6 +265,10 @@ class Map extends React.PureComponent {
                 <div className="sidebar">
                     Longitude: {lng} | Latitude: {lat} | Zoom: {zoom} | 
                     <button onClick={this.handleRouteType}>{this.state.roundtrip === 'true' ? "One-way" : "Loop"}</button>
+                    <form onSubmit={this.handleCreateRoute}>
+                        <input type="text" value={this.state.routeName} onChange={this.handleCreateRouteChange}/>
+                        <button>Create Route</button>
+                    </form>
                 </div>
                 <div ref={this.mapContainer} className="map-container" style={{width:'80%', height:'90vh'}}/>
             </div>
