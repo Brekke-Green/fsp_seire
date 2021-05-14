@@ -13,7 +13,7 @@ import WorkoutFeedContainer from './seire/workout_feed/workout_container';
 import CareerInfoComponent from './seire/career_info.jsx';
 import Footer from './seire/footer/footer';
 import DashboardContainer from "./seire/dashboard/dashboard_container";
-import Map from "./seire/map/route_map";
+import CreateRouteMap from "./seire/map/create_route_map_container";
 
 const App = () => (
     <div className="media">
@@ -32,7 +32,7 @@ const App = () => (
             </Switch>
 
             <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
-            <ProtectedRoute exact path="/routes" component={Map} />
+            <ProtectedRoute exact path="/routes" component={CreateRouteMap} />
 
             {/* <ProtectedRoute exact path="/dashboard" component={ProfileContainer} />
             <ProtectedRoute exact path="/dashboard" component={WorkoutFeedContainer} />
