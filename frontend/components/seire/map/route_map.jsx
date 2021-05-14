@@ -29,6 +29,7 @@ class Map extends React.PureComponent {
         this.handleCreateRoute = this.handleCreateRoute.bind(this);
         this.handleCreateRouteChange = this.handleCreateRouteChange.bind(this);
         this.handleCreateLoop = this.handleCreateLoop.bind(this);
+        this.addRouteToState = this.addRouteToState.bind(this);
     
         this.lastQueryTime = 0;
         this.lastAtWaypoint = 0;
@@ -143,6 +144,10 @@ class Map extends React.PureComponent {
                 // }
             });
         }
+
+        if (prevState.route !== that.state.route) {
+            this.props.submitRoute(this.state.route);
+        }
     }
 
     newWaypoint(coords) {
@@ -247,11 +252,17 @@ class Map extends React.PureComponent {
         this.setState({routeName: e.target.value});
 
     }
-    
+
+    addRouteToState() {
+        this.setState((state) => ({route: {[`${this.state.routeName}`]: this.data}}))
+    }
+
     handleCreateRoute(e) {
         e.preventDefault();
 
-        this.setState({route: this.data})
+        // this.setState((state) => ({route: {[`${this.state.routeName}`]: this.data}}))
+        this.addRouteToState();    
+        console.log(this.state);
     }
     
     handleCreateLoop(e) {
@@ -263,7 +274,9 @@ class Map extends React.PureComponent {
         coords['lat'] = last[1];
 
         this.newWaypoint(coords);
-        this.setState({route: this.data})
+        // this.setState((state) => ({route: {[`${this.state.routeName}`]: this.data}}))
+        this.addRouteToState();
+        console.log(this.state);
     }
 
     render() {
