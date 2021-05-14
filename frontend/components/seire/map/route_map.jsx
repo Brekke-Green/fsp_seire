@@ -94,8 +94,6 @@ class Map extends React.PureComponent {
             }, 'waterway-label');
         });
 
-        console.log(that.waypoints);
-
         map.on('click', function(e) {
             if (that.waypoints.features.length <= 11) {
                 that.newWaypoint(map.unproject(e.point));
@@ -250,7 +248,6 @@ class Map extends React.PureComponent {
 
     handleCreateRouteChange(e) {
         this.setState({routeName: e.target.value});
-
     }
 
     addRouteToState() {
@@ -262,7 +259,6 @@ class Map extends React.PureComponent {
 
         // this.setState((state) => ({route: {[`${this.state.routeName}`]: this.data}}))
         this.addRouteToState();    
-        console.log(this.state);
     }
     
     handleCreateLoop(e) {
@@ -276,7 +272,6 @@ class Map extends React.PureComponent {
         this.newWaypoint(coords);
         // this.setState((state) => ({route: {[`${this.state.routeName}`]: this.data}}))
         this.addRouteToState();
-        console.log(this.state);
     }
 
     render() {
