@@ -12,7 +12,7 @@ class Api::RoutesController < ApplicationController
         if @routes
             render :show
         else
-            render json: ["No route exists."], status: 404
+            render json: ["No route exists"], status: 404
         end
     end
 
@@ -27,11 +27,31 @@ class Api::RoutesController < ApplicationController
     end
     
     def update 
-        
+        @route = Route.find_by(id: params[:id])
+        if @route 
+            if @route.update(route_params)
+                render :show 
+            else
+                render json: @route.errors.full_messages, status: 422
+            end
+        else 
+            render json: ['No route exists'], status: 404
+        end
     end
     
     def destroy 
-
+        @route = Course.find_by(id: params[:id])
+        @user = current_user
+        if @route
+            if @user.id == @route.user_id
+                @route.destory 
+                render "api/users/show"
+            else
+                render json: ["Cannot delete this course"], status: 422
+            end
+        else
+            render json: ["No route exists"], status: 404
+        end
     end
 
     private
