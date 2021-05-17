@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import sessionErrorsReducer from './session_errors_reducer';
+import mapRouteErrorsReducer from './map_route_errors_reducer';
 
 const errorsReducer = combineReducers({
-    session: sessionErrorsReducer
+    session: sessionErrorsReducer,
+    routes: mapRouteErrorsReducer
 })
 
 export default errorsReducer;
