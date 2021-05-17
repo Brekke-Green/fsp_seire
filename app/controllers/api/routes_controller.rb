@@ -8,8 +8,8 @@ class Api::RoutesController < ApplicationController
     end
 
     def show
-        @routes = Route.find_by(id: params[:user_id])
-        if @routes
+        @route = Route.find_by(id: params[:user_id])
+        if @route
             render :show
         else
             render json: ["No route exists"], status: 404
