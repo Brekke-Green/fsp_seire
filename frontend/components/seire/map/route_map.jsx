@@ -251,7 +251,15 @@ class Map extends React.PureComponent {
     }
 
     addRouteToState() {
-        this.setState((state) => ({route: {[`${this.state.routeName}`]: this.data}}))
+        debugger
+        this.setState((state) => ({route: 
+            {
+                route_data: JSON.stringify(this.data),
+                user_id: this.props.currentUser.id,
+                distance: this.data.routes[0].distance,
+                route_name: state.routeName
+            }
+        }))
     }
 
     handleCreateRoute(e) {

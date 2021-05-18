@@ -6,8 +6,9 @@ const mapRouteReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_ROUTE:
-            const routeName = Object.keys(action.route)[0]
-            return Object.assign({}, state, {[routeName]: action.route[routeName]});
+            // const routeName = Object.keys(action.route)[0]
+            // return Object.assign({}, state, {[routeName]: action.route[routeName]});
+            return Object.assign({}, state, {route: action.route});
         default:
             return state;
     }
