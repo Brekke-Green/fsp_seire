@@ -33,6 +33,7 @@ class UserNav extends React.Component {
                     <h1>SEIRE</h1>
                     </Link>
                     <Link to='/routes' className="create-route-link">Create a Route</Link>
+                    <Link to='/workouts' className="create-workout-link">Track a Workout</Link>
                     <div id='nav-bar-button'>
                         <button className="header-button-logout" onClick={this.props.logout}>Log Out</button>
                     </div>
