@@ -148,6 +148,10 @@ class Map extends React.PureComponent {
         }
     }
 
+    componentWillUnmount(){
+        this.props.clearErrors();
+    }
+
     newWaypoint(coords) {
 
         let that = this;
@@ -282,6 +286,18 @@ class Map extends React.PureComponent {
         this.addRouteToState();
     }
 
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+
     render() {
         const { lng, lat, zoom } = this.state;
         
@@ -294,6 +310,7 @@ class Map extends React.PureComponent {
                         <input type="text" value={this.state.routeName} onChange={this.handleCreateRouteChange}/>
                         <button onClick={this.handleCreateRoute}>Create Route</button>
                         <button onClick={this.handleCreateLoop}>Create Loop</button>
+                        {this.renderErrors()}
                     </form>
                 </div>
                 <div ref={this.mapContainer} className="map-container" style={{width:'80%', height:'90vh'}}/>
