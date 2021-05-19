@@ -13,3 +13,10 @@ export const getRoute = (routeId) => {
         data: { routeId }
     })
 }
+
+export const getRoutes = () => {
+    return $.ajax({
+        method: "GET",
+        url: '/api/routes'
+    })
+}

@@ -1,4 +1,4 @@
-import { RECEIVE_ROUTE } from '../actions/map_actions';
+import { RECEIVE_ROUTE, RECEIVE_ROUTES } from '../actions/map_actions';
 
 
 const mapRouteReducer = (state = {}, action) => {
@@ -6,12 +6,12 @@ const mapRouteReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_ROUTE:
-            // const routeName = Object.keys(action.route)[0]
-            // return Object.assign({}, state, {[routeName]: action.route[routeName]});
-            return Object.assign({}, state, {route: action.route});
+            return Object.assign({}, state, {routes: action.route});
+        case RECEIVE_ROUTES:
+            return Object.assign({}, state, {routes: action.routes});
         default:
             return state;
-    }
+    };
 }
 
 export default mapRouteReducer;
