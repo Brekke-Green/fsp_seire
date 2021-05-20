@@ -31,12 +31,12 @@ export const createWorkout = (workout) => dispatch => (
 
 // FIX EVERYTHING LOWER THAN THIS
 
-export const fetchWorkout = (workout) => dispatch => (
+export const requestWorkout = (workout) => dispatch => (
     WorkoutUtil.fetchWorkout(workout).then(workout => (dispatch(receiveWorkout(workout))), 
     error => (dispatch(receiveWorkoutErrors(error.responseJSON))))
 );
 
-export const fetchWorkouts = () => dispatch => (
+export const requestWorkouts = () => dispatch => (
     WorkoutUtil.fetchWorkouts().then(workouts => (dispatch(receiveWorkouts(workouts))), 
     error => (dispatch(receiveWorkoutErrors(error.responseJSON))))
 );

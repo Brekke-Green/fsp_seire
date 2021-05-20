@@ -10,7 +10,7 @@ class WorkoutForm extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchRoutes();
+        this.props.requestRoutes();
     }
 
     handleSubmit() {
