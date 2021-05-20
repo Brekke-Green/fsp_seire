@@ -7,7 +7,7 @@ import WorkoutForm from './workout_form';
 
 const mSTP = ({ session, entities: {workouts}, routes, errors }) => {
     return {
-
+        
     };
 };
 

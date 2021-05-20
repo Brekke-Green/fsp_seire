@@ -2,6 +2,7 @@ import * as MapRouteUtil from './../util/map_route_util';
 
 export const RECEIVE_ROUTE = "RECEIVE_ROUTE";
 export const RECEIVE_ROUTES = "RECEIVE_ROUTES";
+export const REMOVE_ROUTE = "REMOVE_ROUTE";
 export const RECEIVE_ROUTE_ERRORS = "RECEIVE_ROUTE_ERRORS";
 export const CLEAR_ROUTE_ERRORS = "CLEAR_ROUTE_ERRORS";
 
@@ -16,7 +17,7 @@ export const receiveRoutes = routes => ({
 })
 
 const removeRoute = routeId => ({
-    type: RECEIVE_ROUTE,
+    type: REMOVE_ROUTE,
     routeId
 })
 
