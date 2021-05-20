@@ -25,6 +25,18 @@ export const clearWorkoutErrors = () => ({
 });
 
 export const createWorkout = (workout) => dispatch => (
-    MapWorkoutUtil.createWorkout(workout).then(workout => { (dispatch(receiveWorkout(workout))); dispatch(clearWorkoutErrors())}, 
+    WorkoutUtil.createWorkout(workout).then(workout => { (dispatch(receiveWorkout(workout))); dispatch(clearWorkoutErrors())}, 
     error => (dispatch(receiveWorkoutErrors(error.responseJSON))))
 );
+
+// FIX EVERYTHING LOWER THAN THIS
+
+export const fetchWorkout = (workout) => dispatch => (
+    WorkoutUtil.fetchWorkout(workout).then(workout => { (dispatch(receiveWorkout(workout))); dispatch(clearWorkoutErrors())}, 
+    error => (dispatch(receiveWorkoutErrors(error.responseJSON))))
+);
+
+// export const fetchWorkout = (workout) => dispatch => (
+//     WorkoutUtil.fetchWorkout(workout).then(workout => { (dispatch(receiveWorkout(workout))); dispatch(clearWorkoutErrors())}, 
+//     error => (dispatch(receiveWorkoutErrors(error.responseJSON))))
+// );

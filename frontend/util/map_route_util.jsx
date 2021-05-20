@@ -6,15 +6,14 @@ export const createRoute = (route) => {
     })
 }
 
-export const getRoute = (routeId) => {
+export const fetchRoute = (routeId) => {
     return $.ajax({
         method: "GET",
-        url: '/api/route',
-        data: { routeId }
+        url: `/api/routes/${routeId}`,
     })
 }
 
-export const getRoutes = () => {
+export const fetchRoutes = () => {
     return $.ajax({
         method: "GET",
         url: '/api/routes'

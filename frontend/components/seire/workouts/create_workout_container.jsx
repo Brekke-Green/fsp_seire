@@ -7,13 +7,13 @@ import WorkoutForm from './workout_form';
 
 const mSTP = ({ session, entities: {workouts}, routes, errors }) => {
     return {
-        
+
     };
 };
 
 const mDTP = dispatch => {
     return {
-        fetchRoutes: () => dispatchEvent(getRoutes())
+        getRoutes: () => dispatchEvent(receiveRoutes())
     };
 };
 
