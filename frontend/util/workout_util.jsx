@@ -1,7 +1,7 @@
 export const createWorkout = (workout) => {
     return $.ajax({
         method: "POST",
-        url: '/api/workouts',
+        url: `/api/workouts`,
         data: { workout }
     })
 }
@@ -9,21 +9,21 @@ export const createWorkout = (workout) => {
 export const fetchWorkout = (workoutId) => {
     return $.ajax({
         method: "GET",
-        url: `/api/workout/${workoutId}`
+        url: `/api/workouts/${workoutId}`
     })
 }
 
 export const fetchWorkouts = () => {
     return $.ajax({
         method: "GET",
-        url: `/api/workout`,
+        url: `/api/workouts`,
     })
 }
 
 export const updateWorkout = (workout) => {
     return $.ajax({
         method: "PATCH",
-        url: `/api/workouts/${workout.id}`,
+        url: `/api/users/${workout.user_id}/workouts/${workout.id}`,
         data: { workout }
     })
 }

@@ -23,7 +23,7 @@ export const fetchRoutes = () => {
 export const updateRoute = (route) => {
     return $.ajax({
         method: "PATCH",
-        url: `/api/routes/${route.id}`,
+        url: `/api/users/${route.user_id}/routes/${route.id}`,
         data: { route }
     })
 }
