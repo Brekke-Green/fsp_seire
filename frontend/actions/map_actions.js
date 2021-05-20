@@ -15,6 +15,11 @@ export const receiveRoutes = routes => ({
     routes
 })
 
+const removeRoute = routeId => ({
+    type: RECEIVE_ROUTE,
+    routeId
+})
+
 const receiveRouteErrors = (errors) => ({
     type: RECEIVE_ROUTE_ERRORS,
     errors
@@ -29,7 +34,25 @@ export const createRoute = (route) => dispatch => (
     error => (dispatch(receiveRouteErrors(error.responseJSON))))
 );
 
+export const requestRoute = (routeId) => dispatch => (
+    MapRouteUtil.fetchRoute(routeId).then(route => (dispatch(receiveRoute(route))), 
+    error => (dispatch(receiveRouteErrors(error.responseJSON))))
+);
 
+export const requestRoutes = () => dispatch => (
+    MapRouteUtil.fetchRoutes().then(routes => (dispatch(receiveRoutes(routes))), 
+    error => (dispatch(receiveRouteErrors(error.responseJSON))))
+);
+
+export const updateRoute = (route) => dispatch => (
+    MapRouteUtil.updateRoutes(route).then(route => (dispatch(receiveRoutes(route))), 
+    error => (dispatch(receiveRouteErrors(error.responseJSON))))
+);
+
+export const deleteRoute = (routeId) => dispatch => (
+    MapRouteUtil.deleteRoute(routeId).then(() => (dispatch(removeRoute(routeId))), 
+    error => (dispatch(receiveRouteErrors(error.responseJSON))))
+);
 
 // export const login = (user) => dispatch => (
 //     SessionApiUtil.login(user).then(user => { (dispatch(receiveCurrentUser(user))); dispatch(clearErrors())},

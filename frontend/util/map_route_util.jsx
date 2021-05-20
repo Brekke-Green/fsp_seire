@@ -19,3 +19,18 @@ export const fetchRoutes = () => {
         url: '/api/routes'
     })
 }
+
+export const updateRoute = (route) => {
+    return $.ajax({
+        method: "PATCH",
+        url: `/api/routes/${route.id}`,
+        data: { route }
+    })
+}
+
+export const deleteRoute = (routeId) => {
+    return $.ajax({
+        method: "DELETE",
+        url: `/api/routes/${routeId}`
+    })
+}
