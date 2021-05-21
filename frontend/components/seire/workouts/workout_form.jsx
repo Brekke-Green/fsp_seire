@@ -28,13 +28,12 @@ class WorkoutForm extends React.Component {
                     <form onSubmit={this.handleSubmit} className='workout-form-box'>
                         <label htmlFor="routes-select">Choose a route:</label>
                         <select name="routes" id="routes-select">
-                            {
-                                Object.values(routes).map(route => (
-                                    <option key={route.id} value={route.id}>{`${route['route_name']}: ${route['distance']}m`}</option>
-                                ))
-                            }
+                            {Object.values(routes).map(route => (
+                                <option key={route.id * 10} value={route.id}>{`${route['route_name']}: ${route['distance']}m`}</option>
+                            ))}
                         </select>
-                        <input type="text"/>
+                        <input className="workout-input minutes" type="text" value="Minutes"/>
+                        <input className="workout-input seconds" type="text" value="Seconds"/>
                         <button>Track Workout</button>
                     </form>
                 </div>
