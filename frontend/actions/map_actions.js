@@ -11,7 +11,7 @@ const receiveRoute = route => ({
     route
 })
 
-export const receiveRoutes = routes => ({
+const receiveRoutes = routes => ({
     type: RECEIVE_ROUTES,
     routes
 })
@@ -46,7 +46,7 @@ export const requestRoutes = () => dispatch => (
 );
 
 export const updateRoute = (route) => dispatch => (
-    MapRouteUtil.updateRoutes(route).then(route => (dispatch(receiveRoutes(route))), 
+    MapRouteUtil.updateRoute(route).then(route => (dispatch(receiveRoutes(route))), 
     error => (dispatch(receiveRouteErrors(error.responseJSON))))
 );
 
@@ -54,8 +54,3 @@ export const deleteRoute = (routeId) => dispatch => (
     MapRouteUtil.deleteRoute(routeId).then(() => (dispatch(removeRoute(routeId))), 
     error => (dispatch(receiveRouteErrors(error.responseJSON))))
 );
-
-// export const login = (user) => dispatch => (
-//     SessionApiUtil.login(user).then(user => { (dispatch(receiveCurrentUser(user))); dispatch(clearErrors())},
-//     error => (dispatch(receiveErrors(error.responseJSON))))
-// );

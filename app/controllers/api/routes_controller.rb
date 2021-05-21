@@ -3,7 +3,7 @@ class Api::RoutesController < ApplicationController
     before_action :require_logged_in, only: [:create, :update, :destroy]
 
     def index 
-        @routes = Route.where(user_id: params[:user_id])
+        @routes = Route.all()
         render :index
     end
 

@@ -10,7 +10,7 @@ class WorkoutForm extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestRoutes();
+        this.props.getRoutes();
     }
 
     handleSubmit() {
@@ -18,6 +18,10 @@ class WorkoutForm extends React.Component {
     }
 
     render () {
+        if (!this.props.routes.routes) { return null; }
+        debugger
+        const routes = this.props.routes.routes;
+        console.log(routes)
         return (
             <div className='main-content workout-form-container'>
                 <div className='workout-form-container'>
@@ -25,10 +29,13 @@ class WorkoutForm extends React.Component {
                         <label htmlFor="routes-select">Choose a route:</label>
                         <select name="routes" id="routes-select">
                             {
-                                <option value="">{`${this.props}`}</option>
+                                Object.values(routes).map(route => (
+                                    <option key={route.id} value={route.id}>{`${route['route_name']}: ${route['distance']}m`}</option>
+                                ))
                             }
                         </select>
                         <input type="text"/>
+                        <button>Track Workout</button>
                     </form>
                 </div>
             </div>

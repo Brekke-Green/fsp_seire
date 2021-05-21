@@ -1,4 +1,4 @@
-import { RECEIVE_ROUTE, RECEIVE_ROUTES } from '../actions/map_actions';
+import { RECEIVE_ROUTE, RECEIVE_ROUTES, REMOVE_ROUTE } from '../actions/map_actions';
 
 
 const mapRouteReducer = (state = {}, action) => {

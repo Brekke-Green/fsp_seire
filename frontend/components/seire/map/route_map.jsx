@@ -149,7 +149,7 @@ class Map extends React.PureComponent {
     }
 
     componentWillUnmount(){
-        this.props.clearErrors();
+        this.props.clearRouteErrors();
     }
 
     newWaypoint(coords) {
