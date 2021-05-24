@@ -17,13 +17,20 @@ class WorkoutForm extends React.Component {
         this.setState({currentRoute: this.props.routes[e.target.value]})
     }
 
+    handleUpdate(field) {
+        return (e) => {
+            this.setState({[field]: e.target.value});
+        };
+    }
+
     handleSubmit(e) {
         e.preventDefault();
+        debugger
         const workout = {
             user_id: this.props.session.id,
-            route_id: e.target.values.route,
-            workout_type: e.target.values.workoutType,
-            duration: (e.target.values.minutes * 60 + e.target.values.seconds)
+            route_id: e.target.route,
+            workout_type: e.target.workoutType,
+            duration: (e.target.minutes * 60 + e.target.seconds)
         }
         this.props.createWorkout(workout)
     }
@@ -50,10 +57,12 @@ class WorkoutForm extends React.Component {
                                 <option key={route.id * 10} value={route.id}>{`${route['route_name']}: ${route['distance']}m`}</option>
                             ))}
                         </select>
+                        <label>Hours:</label>
+                        <input className="workout-input hours" name="hours" type="number" min="0" max="24" placeholder="0" onChange={this.handleUpdate('hours')}/>
                         <label>Minutes:</label>
-                        <input className="workout-input minutes" name="minutes" type="text" value="Minutes"/>
+                        <input className="workout-input minutes" name="minutes" type="number" min="0" max="60" placeholder="0" onChange={this.handleUpdate('minutes')}/>
                         <label>Seconds:</label>
-                        <input className="workout-input seconds" name="seconds" type="text" value="Seconds"/>
+                        <input className="workout-input seconds" name="seconds" type="number" min="0" max="60" placeholder="0" onChange={this.handleUpdate('seconds')}/>
                         <button>Track Workout</button>
                     </form>
                     <div className="workout-route-display">
