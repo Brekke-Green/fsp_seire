@@ -45,7 +45,6 @@ class WorkoutForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
         const workout = {
             user_id: parseInt(this.state.user_id),
             route_id: parseInt(this.state.route_id),

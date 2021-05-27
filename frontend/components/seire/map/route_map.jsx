@@ -146,7 +146,6 @@ class Map extends React.PureComponent {
         }
 
         if (prevState.route !== that.state.route) {
-            debugger
             this.props.submitRoute(this.state.route);
         }
     }
@@ -204,8 +203,6 @@ class Map extends React.PureComponent {
                 that.looped = false;
             }
         });
-
-        debugger
         // return new Promise((resolve, reject) => {if (true) {resolve()}});
 
     };
@@ -265,7 +262,6 @@ class Map extends React.PureComponent {
     }
 
     addRouteToState() {
-        debugger
         this.setState((state) => ({route: 
         // this.setState({route: 
             {
@@ -276,7 +272,6 @@ class Map extends React.PureComponent {
             }
         // })
         }))
-        debugger
     }
 
     handleCreateRoute(e) {
@@ -294,9 +289,7 @@ class Map extends React.PureComponent {
         coords['lng'] = last[0];
         coords['lat'] = last[1];
         this.looped = true;
-        debugger
         this.newWaypoint(coords);
-        debugger
         // this.setState((state) => ({route: {[`${this.state.routeName}`]: this.data}}))
         
     }
