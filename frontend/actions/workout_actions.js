@@ -29,8 +29,6 @@ export const createWorkout = (workout) => dispatch => (
     error => (dispatch(receiveWorkoutErrors(error.responseJSON))))
 );
 
-// FIX EVERYTHING LOWER THAN THIS
-
 export const requestWorkout = (workout) => dispatch => (
     WorkoutUtil.fetchWorkout(workout).then(workout => (dispatch(receiveWorkout(workout))), 
     error => (dispatch(receiveWorkoutErrors(error.responseJSON))))

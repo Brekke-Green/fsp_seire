@@ -6,9 +6,11 @@ const mapRouteReducer = (state = {}, action) => {
     const nextState = {...state};
     switch (action.type) {
         case RECEIVE_ROUTE:
-            return Object.assign({}, state, {routes: action.route});
+            // return Object.assign({}, state, {routes: action.route});
+            nextState[action.route.id] = action.route;
+            return nextState;
         case RECEIVE_ROUTES:
-            return Object.assign({}, state, {routes: action.routes});
+            return Object.assign({}, state, action.routes);
         case REMOVE_ROUTE:
             delete nextState[action.routeId]
             return nextState;

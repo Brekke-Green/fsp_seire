@@ -10,7 +10,7 @@ const mSTP = ({ session, entities, errors }) => {
         workouts: entities.workouts,
         routes: entities.routes,
         session: session,
-        errors: errors,
+        errors: errors.workouts,
     };
 };
 

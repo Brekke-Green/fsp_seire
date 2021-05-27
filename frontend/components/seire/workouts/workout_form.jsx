@@ -56,10 +56,8 @@ class WorkoutForm extends React.Component {
     }
 
     render () {
-        if (!this.props.routes.routes) { return null; }
-        debugger
-        const routes = this.props.routes.routes;
-        console.log(routes)
+        if (!this.props.routes) { return null; }
+        const routes = this.props.routes;
         return (
             <div className='main-content workout-form-container'>
                 <div className='workout-form-container'>

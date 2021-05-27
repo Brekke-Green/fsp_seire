@@ -39,6 +39,8 @@ class Map extends React.PureComponent {
         this.pointHopper = {};
         this.pause = true;
         this.speedFactor = 50;
+        this.data = {};
+        this.looped = false;
     }
 
     componentDidMount() {
@@ -144,6 +146,7 @@ class Map extends React.PureComponent {
         }
 
         if (prevState.route !== that.state.route) {
+            debugger
             this.props.submitRoute(this.state.route);
         }
     }
@@ -173,7 +176,7 @@ class Map extends React.PureComponent {
         $.ajax({
             method: 'GET',
             url: this.assembleQueryURL()
-            }).done(function (data) {
+            }).then(function (data) {
             // Create a GeoJSON feature collection
             let routeGeoJSON = turf.featureCollection([
             turf.feature(data.routes[0].geometry)
@@ -195,7 +198,16 @@ class Map extends React.PureComponent {
                 'Maximum number of points reached!'
                 );
             }
+            
+            if (that.looped) {
+                that.addRouteToState();
+                that.looped = false;
+            }
         });
+
+        debugger
+        // return new Promise((resolve, reject) => {if (true) {resolve()}});
+
     };
 
 
@@ -211,9 +223,7 @@ class Map extends React.PureComponent {
             return routeGeoJSON;
         }
 
-        // Store the location of the truck in a variable called coordinates
         let coordinates = [];
-        let distributions = [];
         let roundtrip = this.state.roundtrip;
         
         // Create an array of GeoJSON feature collections for each point
@@ -257,13 +267,16 @@ class Map extends React.PureComponent {
     addRouteToState() {
         debugger
         this.setState((state) => ({route: 
+        // this.setState({route: 
             {
                 route_data: JSON.stringify(this.data),
                 user_id: this.props.currentUser.id,
                 distance: this.data.routes[0].distance,
                 route_name: state.routeName
             }
+        // })
         }))
+        debugger
     }
 
     handleCreateRoute(e) {
@@ -280,10 +293,12 @@ class Map extends React.PureComponent {
         let last = this.waypoints.features[0].geometry.coordinates
         coords['lng'] = last[0];
         coords['lat'] = last[1];
-
+        this.looped = true;
+        debugger
         this.newWaypoint(coords);
+        debugger
         // this.setState((state) => ({route: {[`${this.state.routeName}`]: this.data}}))
-        this.addRouteToState();
+        
     }
 
     renderErrors() {
@@ -307,7 +322,7 @@ class Map extends React.PureComponent {
                     Longitude: {lng} | Latitude: {lat} | Zoom: {zoom} | 
                     {/* <button onClick={this.handleRouteType}>{this.state.roundtrip === 'true' ? "One-way" : "Loop"}</button> */}
                     <form>
-                        <input type="text" value={this.state.routeName} onChange={this.handleCreateRouteChange}/>
+                        <input type="text" placeholder={this.state.routeName} onChange={this.handleCreateRouteChange}/>
                         <button onClick={this.handleCreateRoute}>Create Route</button>
                         <button onClick={this.handleCreateLoop}>Create Loop</button>
                         {this.renderErrors()}
