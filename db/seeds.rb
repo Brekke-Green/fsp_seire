@@ -48,6 +48,16 @@ Route.create(
     user_id: 1
 )
 
+Workout.create(user_id: 1, route_id: 1, workout_type: 'run', duration: 598)
+Workout.create(user_id: 1, route_id: 1, workout_type: 'run', duration: 750)
+Workout.create(user_id: 1, route_id: 1, workout_type: 'run', duration: 700)
+Workout.create(user_id: 1, route_id: 2, workout_type: 'hike', duration: 996)
+Workout.create(user_id: 1, route_id: 2, workout_type: 'hike', duration: 1306)
+Workout.create(user_id: 1, route_id: 2, workout_type: 'hike', duration: 1100)
+Workout.create(user_id: 1, route_id: 4, workout_type: 'run', duration: 2790)
+Workout.create(user_id: 1, route_id: 4, workout_type: 'run', duration: 3690)
+Workout.create(user_id: 1, route_id: 4, workout_type: 'run', duration: 3090)
+
 Workout.create(user_id: 2, route_id: 1, workout_type: 'run', duration: 598)
 Workout.create(user_id: 3, route_id: 1, workout_type: 'run', duration: 750)
 Workout.create(user_id: 4, route_id: 1, workout_type: 'run', duration: 700)
@@ -57,4 +67,3 @@ Workout.create(user_id: 4, route_id: 2, workout_type: 'hike', duration: 1100)
 Workout.create(user_id: 2, route_id: 4, workout_type: 'run', duration: 2790)
 Workout.create(user_id: 3, route_id: 4, workout_type: 'run', duration: 3690)
 Workout.create(user_id: 4, route_id: 4, workout_type: 'run', duration: 3090)
-
