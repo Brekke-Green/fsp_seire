@@ -19,7 +19,8 @@ class Profile extends React.Component {
         this.totalDuration = this.totalDuration.bind(this);
         this.totalDistance = this.totalDistance.bind(this);
         this.calculateUserAverageSpeed = this.calculateUserAverageSpeed.bind(this);
-        this.calculateStats = this.calculateStats.bind(this)
+        this.calculateStats = this.calculateStats.bind(this);
+        this.setupUserStats = this.setupUserStats.bind(this);
     }
 
     componentDidMount() {
@@ -84,20 +85,49 @@ class Profile extends React.Component {
     calculateStats() {
         this.filterUserWorkouts(this.props.session.id);
         this.workoutTypes.forEach( workoutType => {this.filterWorkoutsByType(workoutType)});
-        // create userStats function here
+        this.setupUserStats();
+    }
+
+    setupUserStats () {
+        this.userStats['run'] = this.userRuns;
+        this.userStats['walk'] = this.userWalks;
+        this.userStats['hike'] = this.userHikes;
+        this.userStats['cycle'] = this.userCycles;
     }
 
     render() {
         if (Object.keys(this.props.routes).length < 1 && Object.keys(this.props.workouts).length < 1) { return null; }
         (this.userWorkouts.length > 0) ? this.userWorkouts : this.calculateStats()
         let userWorkouts = this.userWorkouts;
-        
+        let userStats = this.userStats;
+        let listTypes = this.workoutTypes;
         
         debugger
         return (
             <div>
                 <div>
-                    <div></div>
+                    <div>
+                        {listTypes.map( type => {
+                            return <div>
+                                <ul key={Math.random()}>
+                                    <label className={type}>{`${type.toUpperCase()} -`}</label>
+                                    <li>
+                                        {`# of workouts: ${userStats.workouts.length} ${type}s`}
+                                    </li>
+                                    <li>
+                                        {`Total distance: ${userStats.distance / 1000}km`}
+                                    </li>
+                                    <li>
+                                        {`Total time: ${userStats.duration / 3600} hours`}
+                                    </li>
+                                    <li>
+                                        {`Average pace: ${userStats.speed * 3.6}km/h`}
+                                    </li>
+                                </ul>
+                                <br />
+                            </div>
+                        })}
+                    </div>
                     {userWorkouts.map( workout => {
                         return <div key={Math.random()}>{`${workout.user_id}: ${workout.duration}`}</div>
                     })}
