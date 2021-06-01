@@ -5,6 +5,8 @@ class Profile extends React.Component {
         super(props);
 
         this.workoutTypes = ['run', 'walk', 'hike', 'cycle'];
+        this.flag = false;
+        this.statsFlag = false;
         
         this.userWorkouts = [];
         this.userRuns = {};
@@ -18,20 +20,22 @@ class Profile extends React.Component {
         this.filterWorkoutsByType = this.filterWorkoutsByType.bind(this);
         this.totalDuration = this.totalDuration.bind(this);
         this.totalDistance = this.totalDistance.bind(this);
-        this.calculateUserAverageSpeed = this.calculateUserAverageSpeed.bind(this);
         this.calculateStats = this.calculateStats.bind(this);
         this.setupUserStats = this.setupUserStats.bind(this);
+        this.handleNumbers = this.handleNumbers.bind(this);
     }
 
     componentDidMount() {
         this.props.getRoutes();
         this.props.getWorkouts();
+        this.flag = true;
     }
 
     filterUserWorkouts(userId) {
         let workouts = Object.values(this.props.workouts);
-
+        debugger
         workouts.forEach( workout => {
+            debugger
             if (workout.user_id === userId) {
                 this.userWorkouts.push(workout);
             }
@@ -86,51 +90,55 @@ class Profile extends React.Component {
         this.filterUserWorkouts(this.props.session.id);
         this.workoutTypes.forEach( workoutType => {this.filterWorkoutsByType(workoutType)});
         this.setupUserStats();
+        this.statsFlag = true;
     }
 
-    setupUserStats () {
+    setupUserStats() {
         this.userStats['run'] = this.userRuns;
         this.userStats['walk'] = this.userWalks;
         this.userStats['hike'] = this.userHikes;
         this.userStats['cycle'] = this.userCycles;
     }
 
+    handleNumbers(number) {
+        if (isNaN(number)) {return 0};
+        if (number % 2 === 0) {return number};
+        return Number.parseFloat(number).toFixed(2);
+    }
+
     render() {
-        if (Object.keys(this.props.routes).length < 1 && Object.keys(this.props.workouts).length < 1) { return null; }
-        (this.userWorkouts.length > 0) ? this.userWorkouts : this.calculateStats()
+        if (!this.flag) {return null};
+        
+        (this.userWorkouts.length > 0) ? this.userWorkouts : this.calculateStats();
         let userWorkouts = this.userWorkouts;
         let userStats = this.userStats;
         let listTypes = this.workoutTypes;
-        
-        debugger
+        if (!this.statsFlag) {return null};
         return (
             <div>
                 <div>
                     <div>
                         {listTypes.map( type => {
-                            return <div>
+                            return <div key={Math.random()}>
                                 <ul key={Math.random()}>
                                     <label className={type}>{`${type.toUpperCase()} -`}</label>
                                     <li>
-                                        {`# of workouts: ${userStats.workouts.length} ${type}s`}
+                                        {`# of workouts: ${Object.keys(userStats[type].workouts).length} ${type}s`}
                                     </li>
                                     <li>
-                                        {`Total distance: ${userStats.distance / 1000}km`}
+                                        {`Total distance: ${this.handleNumbers(userStats[type].distance / 1000)}km`}
                                     </li>
                                     <li>
-                                        {`Total time: ${userStats.duration / 3600} hours`}
+                                        {`Total time: ${this.handleNumbers(userStats[type].duration / 3600)} hours`}
                                     </li>
                                     <li>
-                                        {`Average pace: ${userStats.speed * 3.6}km/h`}
+                                        {`Average pace: ${this.handleNumbers(userStats[type].speed * 3.6)}km/h`}
                                     </li>
                                 </ul>
                                 <br />
                             </div>
                         })}
                     </div>
-                    {userWorkouts.map( workout => {
-                        return <div key={Math.random()}>{`${workout.user_id}: ${workout.duration}`}</div>
-                    })}
                 </div>
             </div>
         )
