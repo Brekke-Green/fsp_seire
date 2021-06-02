@@ -34,7 +34,7 @@ class WorkoutItem extends React.Component {
             <div>
                 {Object.values(workouts).map(workout => (
                     <div key={workout.id * 10}>
-                        <label>{`${routes[workout.route_id]['route_name']} -`}</label>
+                        <label>{`${routes[workout.route_id]['route_name']} - ${workout.user.username}`}</label>
                             <ul>
                                 <li>
                                     {`Type: ${workout.workout_type.toUpperCase()}`}
