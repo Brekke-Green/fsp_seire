@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import EditWorkout from '../workouts/edit_workout_container';
+import { Link } from 'react-router-dom'
 
 class WorkoutItem extends React.Component {
     constructor(props) {
@@ -32,15 +31,15 @@ class WorkoutItem extends React.Component {
 
     handleEdit(userId, workoutId) {
         const path = `/workouts/${workoutId}`;
-        return (this.props.session.id === userId) ? <Link to={path}>Edit Workout</ Link> : null
+        return (this.props.session.id === userId) ? <Link to={path} workout={this.props.workouts[workoutId]} >Edit Route</Link> : null
     }
 
     handleDelete(userId, workoutId) {
-        debugger
         return (this.props.session.id === userId) ? <button className='workout-delete-button' onClick={() => this.props.deleteWorkout(workoutId)}>Delete Route</button> : null
     }
 
     render() {
+        debugger
         if (Object.keys(this.props.routes).length < 1 && Object.keys(this.props.workouts).length < 1) { return null; }
         const routes = this.props.routes;
         const workouts = this.props.workouts;
@@ -48,7 +47,7 @@ class WorkoutItem extends React.Component {
             <div>
                 {Object.values(workouts).map(workout => (
                     <div key={workout.id * 10}>
-                        <label>{`${routes[workout.route_id]['route_name']} - ${workout.user.username}`}</label>
+                        <label>{`${workout.route.route_name} - ${workout.user.username}`}</label>
                             <ul>
                                 <li>
                                     {`Type: ${workout.workout_type.toUpperCase()}`}

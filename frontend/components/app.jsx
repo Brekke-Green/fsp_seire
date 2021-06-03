@@ -15,7 +15,8 @@ import Footer from './seire/footer/footer';
 import DashboardContainer from "./seire/dashboard/dashboard_container";
 import CreateRouteMap from "./seire/map/create_route_map_container";
 import CreateWorkout from "./seire/workouts/create_workout_container";
-import EditWorkoutForm from "./seire/workouts/edit_workout_container";
+import EditWorkoutForm from '../components/seire/workouts/edit_workout_container';
+
 
 const App = () => (
     <div className="media">
@@ -36,7 +37,7 @@ const App = () => (
             <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
             <ProtectedRoute exact path="/routes" component={CreateRouteMap} />
             <ProtectedRoute exact path="/workouts" component={CreateWorkout} />
-            <ProtectedRoute path="/workouts/" component={EditWorkoutForm} />
+            <ProtectedRoute exact path="/workouts/:id" component={EditWorkoutForm}  />
 
             {/* <ProtectedRoute exact path="/dashboard" component={ProfileContainer} />
             <ProtectedRoute exact path="/dashboard" component={WorkoutFeedContainer} />

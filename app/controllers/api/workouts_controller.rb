@@ -30,7 +30,7 @@ class Api::WorkoutsController < ApplicationController
         @workout = Workout.find_by(id: params[:id])
         if @workout 
             if @workout.update(workout_params)
-                render :index 
+                render :show 
             else
                 render json: @workout.errors.full_messages, status: 422
             end

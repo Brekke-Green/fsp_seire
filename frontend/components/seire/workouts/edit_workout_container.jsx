@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { clearWorkoutErrors, requestWorkout, updateWorkout } from '../../../actions/workout_actions';
 import { requestRoutes } from '../../../actions/map_actions';
 
 const mSTP = (state, ownProps) => {
+    let workoutId = ownProps.location.pathname.split("/").pop();
     return {
         routes: state.entities.routes,
-        workout: state.entities.workouts[ownProps.match.params.workoutId],
+        workout: state.entities.workouts[workoutId],
         session: state.session,
         errors: state.errors.workouts,
     };
@@ -24,7 +26,16 @@ const mDTP = dispatch => {
 class EditWorkoutForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleSelection = this.handleSelection.bind(this);
+        this.handleWorkoutType = this.handleWorkoutType.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.getRoutes();
+        this.setState({
+            workout_id: this.props.workout.id,
             currentRoute: this.props.workout.route.route_name,
             user_id: this.props.session.id,
             route_id: this.props.workout.route_id,
@@ -34,15 +45,7 @@ class EditWorkoutForm extends React.Component {
             seconds: ((this.props.workout.duration % 3600) % 60),
             duration: this.props.workout.duration,
 
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleUpdate = this.handleUpdate.bind(this);
-        this.handleSelection = this.handleSelection.bind(this);
-        this.handleWorkoutType = this.handleWorkoutType.bind(this);
-    }
-
-    componentDidMount() {
-        this.props.getRoutes();
+        });
     }
 
     componentWillUnmount() {
@@ -71,17 +74,18 @@ class EditWorkoutForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const workout = {
+            id: this.state.workout_id,
             user_id: parseInt(this.state.user_id),
             route_id: parseInt(this.state.route_id),
             workout_type: this.state.workout_type,
             duration: (parseInt(this.state.hours) * 3600 + parseInt(this.state.minutes) * 60 + parseInt(this.state.seconds))
         }
-        this.props.createWorkout(workout)
+        this.props.updateWorkout(workout);
+        this.props.history.push('/dashboard');
     }
 
     render () {
-        debugger
-        if (!this.props.routes) { return null; }
+        if (!this.props.routes || !this.state) { return null; }
         const routes = this.props.routes;
         return (
             <div className='main-content workout-form-container'>
@@ -106,7 +110,7 @@ class EditWorkoutForm extends React.Component {
                         <input className="workout-input minutes" name="minutes" type="number" min="0" max="60" defaultValue={this.state.minutes} onChange={this.handleUpdate('minutes')}/>
                         <label>Seconds:</label>
                         <input className="workout-input seconds" name="seconds" type="number" min="0" max="60" defaultValue={this.state.seconds} onChange={this.handleUpdate('seconds')}/>
-                        <button>Track Workout</button>
+                        <button>Update Workout</button>
                     </form>
                     <div className="workout-route-display">
                         WORKOUT ROUTE DISPLAY
