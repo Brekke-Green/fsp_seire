@@ -45,13 +45,15 @@ class WorkoutForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
         const workout = {
             user_id: parseInt(this.state.user_id),
-            route_id: parseInt(this.state.route_id),
+            route_id: (this.state.route_id) ? parseInt(this.state.route_id) : parseInt(Object.values(this.props.routes)[0].id),
             workout_type: this.state.workout_type,
             duration: (parseInt(this.state.hours) * 3600 + parseInt(this.state.minutes) * 60 + parseInt(this.state.seconds))
         }
-        this.props.createWorkout(workout)
+        this.props.createWorkout(workout);
+        this.props.history.push('/dashboard');
     }
 
     render () {
