@@ -30,7 +30,7 @@ class Api::WorkoutsController < ApplicationController
         @workout = Workout.find_by(id: params[:id])
         if @workout 
             if @workout.update(workout_params)
-                render :show 
+                render :index 
             else
                 render json: @workout.errors.full_messages, status: 422
             end
@@ -41,17 +41,7 @@ class Api::WorkoutsController < ApplicationController
 
     def destroy 
         @workout = Workout.find_by(id: params[:id])
-        @user = current_user
-        if @workout
-            if @user.id == @workout.user_id
-                @workout.destory 
-                render "api/users/show"
-            else
-                render json: ["Cannot delete this workout"], status: 422
-            end
-        else
-            render json: ["No workout exists"], status: 404
-        end
+        @workout.destroy 
     end
 
     private 

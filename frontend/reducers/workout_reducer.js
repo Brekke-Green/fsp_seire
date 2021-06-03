@@ -1,4 +1,4 @@
-import { RECEIVE_WORKOUT, RECEIVE_WORKOUTS } from '../actions/workout_actions';
+import { RECEIVE_WORKOUT, RECEIVE_WORKOUTS, REMOVE_WORKOUT } from '../actions/workout_actions';
 
 
 const workoutsReducer = (state = {}, action) => {
@@ -10,6 +10,9 @@ const workoutsReducer = (state = {}, action) => {
             return nextState;
         case RECEIVE_WORKOUTS:
             return Object.assign({}, state, action.workouts);
+        case REMOVE_WORKOUT:
+            delete nextState[action.workoutId]
+            return nextState;
         default:
             return state;
     }

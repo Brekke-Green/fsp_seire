@@ -5,7 +5,7 @@ import { clearWorkoutErrors, requestWorkout, createWorkout } from '../../../acti
 import { requestRoutes } from '../../../actions/map_actions';
 import WorkoutForm from './workout_form';
 
-const mSTP = ({ session, entities, errors }) => {
+const mSTP = ({ entities, session, errors }) => {
     return {
         workouts: entities.workouts,
         routes: entities.routes,

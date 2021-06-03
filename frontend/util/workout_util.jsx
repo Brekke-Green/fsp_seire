@@ -28,3 +28,10 @@ export const updateWorkout = (workout) => {
     })
 }
 
+export const deleteWorkout = (workoutId) => {
+    return $.ajax({
+        method: "DELETE",
+        url: `/api/workouts/${workoutId}`
+    })
+}
+

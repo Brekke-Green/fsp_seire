@@ -33,9 +33,8 @@ class Profile extends React.Component {
 
     filterUserWorkouts(userId) {
         let workouts = Object.values(this.props.workouts);
-        debugger
         workouts.forEach( workout => {
-            debugger
+
             if (workout.user_id === userId) {
                 this.userWorkouts.push(workout);
             }

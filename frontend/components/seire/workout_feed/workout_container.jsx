@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { requestRoutes } from '../../../actions/map_actions';
-import { requestWorkouts } from '../../../actions/workout_actions';
+import { requestWorkouts, deleteWorkout } from '../../../actions/workout_actions';
 import WorkoutItem from './workout_item';
 
 const mSTP = ({ session, entities, errors }) => {
@@ -15,7 +15,8 @@ const mSTP = ({ session, entities, errors }) => {
 
 const mDTP = dispatch => ({
     getRoutes: () => dispatch(requestRoutes()),
-    getWorkouts: () => dispatch(requestWorkouts())
+    getWorkouts: () => dispatch(requestWorkouts()),
+    deleteWorkout: workoutId => dispatch(deleteWorkout(workoutId))
 })
 
 export default connect(mSTP, mDTP)(WorkoutItem);

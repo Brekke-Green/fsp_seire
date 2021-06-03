@@ -2,6 +2,7 @@ import * as WorkoutUtil from './../util/workout_util';
 
 export const RECEIVE_WORKOUT = "RECEIVE_WORKOUT";
 export const RECEIVE_WORKOUTS = "RECEIVE_WORKOUTS";
+export const REMOVE_WORKOUT = "REMOVE_WORKOUTS";
 export const RECEIVE_WORKOUT_ERRORS = "RECEIVE_WORKOUT_ERRORS";
 export const CLEAR_WORKOUT_ERRORS = "CLEAR_WORKOUT_ERRORS";
 
@@ -13,6 +14,11 @@ const receiveWorkout = workout => ({
 const receiveWorkouts = workouts => ({
     type: RECEIVE_WORKOUTS,
     workouts
+})
+
+const removeWorkout = workoutId => ({
+    type: REMOVE_WORKOUT,
+    workoutId
 })
 
 const receiveWorkoutErrors = (errors) => ({
@@ -39,3 +45,12 @@ export const requestWorkouts = () => dispatch => (
     error => (dispatch(receiveWorkoutErrors(error.responseJSON))))
 );
 
+export const updateWorkout = (workout) => dispatch => (
+    WorkoutUtil.updateWorkout(workout).then(workout => (dispatch(receiveWorkouts(Workout))), 
+    error => (dispatch(receiveWorkoutErrors(error.responseJSON))))
+);
+
+export const deleteWorkout = (workoutId) => dispatch => (
+    WorkoutUtil.deleteWorkout(workoutId).then(() => (dispatch(removeWorkout(workoutId))), 
+    error => (dispatch(receiveWorkoutErrors(error.responseJSON))))
+);

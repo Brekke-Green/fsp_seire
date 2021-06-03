@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import EditWorkout from '../workouts/edit_workout_container';
 
 class WorkoutItem extends React.Component {
     constructor(props) {
@@ -6,6 +8,8 @@ class WorkoutItem extends React.Component {
 
         this.handleNumbers = this.handleNumbers.bind(this);
         this.handleTime = this.handleTime.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -24,6 +28,16 @@ class WorkoutItem extends React.Component {
         const minutes = Math.floor((time % 3600) / 60);
         const seconds = ((time % 3600) % 60);
         return `${hours}h ${minutes}m ${seconds}s`
+    }
+
+    handleEdit(userId, workoutId) {
+        const path = `/workouts/${workoutId}`;
+        return (this.props.session.id === userId) ? <Link to={path}>Edit Workout</ Link> : null
+    }
+
+    handleDelete(userId, workoutId) {
+        debugger
+        return (this.props.session.id === userId) ? <button className='workout-delete-button' onClick={() => this.props.deleteWorkout(workoutId)}>Delete Route</button> : null
     }
 
     render() {
@@ -50,6 +64,8 @@ class WorkoutItem extends React.Component {
                                 </li>
                                 <br />
                             </ul>  
+                            {this.handleEdit(workout.user_id, workout.id)}
+                            {this.handleDelete(workout.user_id, workout.id)}
                     </div>
                 ))}
             </div>

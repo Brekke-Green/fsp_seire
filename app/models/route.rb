@@ -5,4 +5,7 @@ class Route < ApplicationRecord
 
     belongs_to :user,
     foreign_key: :user_id
+
+    has_many :workouts,
+    foreign_key: :route_id
 end
