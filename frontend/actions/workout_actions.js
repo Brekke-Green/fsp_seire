@@ -46,7 +46,7 @@ export const requestWorkouts = () => dispatch => (
 );
 
 export const updateWorkout = (workout) => dispatch => (
-    WorkoutUtil.updateWorkout(workout).then(workout => (dispatch(receiveWorkouts(Workout))), 
+    WorkoutUtil.updateWorkout(workout).then(workout => (dispatch(receiveWorkouts(workout))), 
     error => (dispatch(receiveWorkoutErrors(error.responseJSON))))
 );
 
