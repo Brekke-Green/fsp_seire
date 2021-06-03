@@ -43,6 +43,7 @@ class WorkoutItem extends React.Component {
         if (Object.keys(this.props.routes).length < 1 && Object.keys(this.props.workouts).length < 1) { return null; }
         const routes = this.props.routes;
         const workouts = this.props.workouts;
+        
         return (
             <div>
                 {Object.values(workouts).map(workout => (
