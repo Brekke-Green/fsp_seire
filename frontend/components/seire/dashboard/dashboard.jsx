@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
 
     render () {
         return (
-            <div className="main-content dashboard-container">
+            <div className="main-content dashboard-container" id="dashboard-background">
                 <ProfileContainer />
                 <WorkoutFeedContainer />
                 <CareerInfoComponent />

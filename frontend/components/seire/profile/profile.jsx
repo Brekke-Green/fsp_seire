@@ -114,8 +114,9 @@ class Profile extends React.Component {
         let listTypes = this.workoutTypes;
         if (!this.statsFlag) {return null};
         return (
-            <div>
+            <div id="profile-section">
                 <div>
+                    <div className="dashboard-title">ATHLETE STATS</div>
                     <div>
                         {listTypes.map( type => {
                             return <div key={Math.random()}>

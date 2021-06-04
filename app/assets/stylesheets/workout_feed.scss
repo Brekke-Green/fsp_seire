@@ -1,0 +1,9 @@
+.workout-item-container {
+    max-height: 400px;
+    overflow: hideen;
+}
+
+.workout-item-container > * {
+    font-size: 20px;
+    padding: 5px;
+}

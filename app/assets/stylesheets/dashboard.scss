@@ -1,0 +1,42 @@
+#dashboard-background {
+    background-color: #f7f7fa;
+    width: 100%;
+    height: 100vh;
+}
+
+#profile-section {
+    position: fixed;
+}
+
+#personal-links-section {
+    position: fixed;
+}
+
+// #workout-feed-section {
+    
+// }
+
+.dashboard-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#workout-delete-button :hover {
+    background-color: #cc4200;
+    border-color: #cc4200;
+}
+
+#workout-delete-button {
+    display: flex;
+    background-color: #fc5200;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    padding: 6px 16px;
+    min-height: unset;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    border-color: #dfdfe8;
+}
