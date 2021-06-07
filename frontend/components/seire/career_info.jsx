@@ -2,7 +2,7 @@ import React from 'react';
 
 const CareerInfo = () => (
     <div id="personal-links-section">
-        <div className="footer-col-label">FOLLOW</div>
+        <div className="personal-links-title">CONTACT ME</div>
         <ul>
             <li><a href="https://github.com/Brekke-Green">GITHUB</a></li>
             <li><a href="https://www.linkedin.com/in/brekke-andrew-green/">LINKEDIN</a></li>
