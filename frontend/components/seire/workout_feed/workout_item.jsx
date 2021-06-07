@@ -46,10 +46,10 @@ class WorkoutItem extends React.Component {
         return (
             <div id="workout-feed-section">
                 <div className="dashboard-title">WORKOUT FEED</div>
-                <div className="workout-item-container">
+                <div className="workout-feed-container">
                     {Object.values(workouts).map(workout => (
-                        <div key={workout.id * 10}>
-                            <label>{`${workout.route.route_name} - ${workout.user.username}`}</label>
+                        <div key={workout.id * 10} className="workout-item">
+                            <label className="workout-item-title">{`${workout.route.route_name} - ${workout.user.username}`}</label>
                                 <ul>
                                     <li>
                                         {`Type: ${workout.workout_type.toUpperCase()}`}
