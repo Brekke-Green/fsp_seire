@@ -8,6 +8,7 @@ const mSTP = ({ session, entities, errors }) => {
     return {
         workouts: entities.workouts,
         routes: entities.routes,
+        userName: entities.users[session.id].username,
         session: session,
         errors: errors.workouts,
     };

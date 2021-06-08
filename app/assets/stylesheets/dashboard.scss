@@ -14,11 +14,20 @@
 
 #profile-section {
     position: fixed;
-    width: 25%;
+    width: 280px;
     display: flex;
     top: 80px;
-    right: 0px;
-    left: 50px;
+    background-color: white;
+}
+
+#workout-feed-section {
+    min-width: 50%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 25%;
+    overflow: auto;
 }
 
 #personal-links-section {
@@ -27,19 +36,21 @@
     display: flex;
     flex-direction: column;
     top: 80px;
-    right: 50px;
-}
-
-#workout-feed-section {
-    min-width: 50%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    left: 25%;
-    overflow: auto;
+    right: 0;
 }
 
 .dashboard-title {
     font-size: 24px;
     font-weight: 700;
+}
+
+.profile-section-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.personal-links-container > * {
+    display: flex;
+    flex-direction: column;
 }

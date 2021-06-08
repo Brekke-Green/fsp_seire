@@ -1,9 +1,9 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
-import MapboxDraw from "@mapbox/mapbox-gl-draw";
+// import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+// import MapboxDraw from "@mapbox/mapbox-gl-draw";
 
-mapboxgl.workerClass = MapboxWorker;
+// mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken = 'pk.eyJ1IjoiYnJla2tlZ3JlZW4iLCJhIjoiY2tiemRjMDJ5MHFmdTJzcGp2ODNrd214ciJ9.lP6rEXwmx61SO2M0u3pgUQ';
 
 // Brekke, NO 61.01, 05.27

@@ -115,7 +115,8 @@ class Profile extends React.Component {
         if (!this.statsFlag) {return null};
         return (
             <div id="profile-section">
-                <div>
+                <div className="profile-section-container">
+                    <div className="profile-username-title">{this.props.userName}</div>
                     <div className="dashboard-title">ATHLETE STATS</div>
                     <div>
                         {listTypes.map( type => {
