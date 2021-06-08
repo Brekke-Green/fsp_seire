@@ -3,7 +3,7 @@ bundle.js*
 bundle.js.map
 /public/assets
 
-config/master.key
+/config/master.key
 
 log/*
 tmp/*
