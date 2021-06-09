@@ -16,8 +16,9 @@
     position: fixed;
     width: 280px;
     display: flex;
-    top: 80px;
+    top: 115px;
     background-color: white;
+    justify-content: center;
 }
 
 #workout-feed-section {
@@ -35,8 +36,15 @@
     width: 25%;
     display: flex;
     flex-direction: column;
-    top: 80px;
+    top: 115px;
     right: 0;
+}
+
+.profile-username-title {
+    font-size: 26px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
 }
 
 .dashboard-title {
@@ -50,7 +58,10 @@
     flex-direction: column;
 }
 
-.personal-links-container > * {
+.personal-links-container ul > * {
     display: flex;
-    flex-direction: column;
+    border-bottom: 1px solid lightgray;
+    width: 280px;
+    padding: 40px;
 }
+
