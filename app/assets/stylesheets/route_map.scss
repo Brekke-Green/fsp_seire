@@ -1,9 +1,10 @@
 .map-container {
     position: absolute;
-    top: 0;
+    top: 55px;
     right: 0;
     left: 0;
     bottom: 0;
+    overflow: hidden;
 }
 
 .sidebar {
@@ -13,7 +14,7 @@
     font: 15px/24px monospace;
     z-index: 1;
     position: absolute;
-    top: 0;
+    top: 55px;
     left: 0;
     margin: 12px;
     border-radius: 4px;

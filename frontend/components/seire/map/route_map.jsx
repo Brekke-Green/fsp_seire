@@ -321,7 +321,7 @@ class Map extends React.PureComponent {
                         {this.renderErrors()}
                     </form>
                 </div>
-                <div ref={this.mapContainer} className="map-container" style={{width:'80%', height:'90vh'}}/>
+                <div ref={this.mapContainer} className="map-container" style={{width:'100%', height:'100vh'}}/>
             </div>
         );
     }

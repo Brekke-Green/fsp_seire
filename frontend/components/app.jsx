@@ -25,6 +25,8 @@ const App = () => (
             <AuthRoute exact path="/login" component={NavBarContainer} />
             <AuthRoute exact path="/" component={NavBarContainer} />
             <ProtectedRoute exact path="/dashboard" component={UserNavContainer} />
+            <ProtectedRoute exact path="/routes" component={UserNavContainer} />
+            <ProtectedRoute exact path="/workouts" component={UserNavContainer} />
         </Switch>
         
         {/* <div className="main-content"> */}
