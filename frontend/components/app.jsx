@@ -27,6 +27,7 @@ const App = () => (
             <ProtectedRoute exact path="/dashboard" component={UserNavContainer} />
             <ProtectedRoute exact path="/routes" component={UserNavContainer} />
             <ProtectedRoute exact path="/workouts" component={UserNavContainer} />
+            <ProtectedRoute path="/workouts/" component={UserNavContainer} />
         </Switch>
         
         {/* <div className="main-content"> */}
