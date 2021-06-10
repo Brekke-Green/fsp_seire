@@ -116,24 +116,39 @@ class Profile extends React.Component {
         return (
             <div id="profile-section">
                 <div className="profile-section-container">
-                    <div className="profile-username-title">{this.props.userName}</div>
                     <div className="dashboard-title">ATHLETE STATS</div>
+                    <br />
+                    <div className="profile-username-title">{this.props.userName}</div>
+                    <br />
                     <div>
                         {listTypes.map( type => {
                             return <div key={Math.random()}>
-                                <ul key={Math.random()}>
-                                    <label className={type}>{`${type.toUpperCase()} -`}</label>
+                                <ul key={Math.random()} className="profile-stats-list">
+                                    <label className="profile-stats-type">{`${type.toUpperCase()} -`}</label>
+                                    <br />
                                     <li>
-                                        {`# of workouts: ${Object.keys(userStats[type].workouts).length} ${type}s`}
+                                        <label># of workouts: </label>
+                                        <div>
+                                            {`${Object.keys(userStats[type].workouts).length} ${type}s`}
+                                        </div>
                                     </li>
                                     <li>
-                                        {`Total distance: ${this.handleNumbers(userStats[type].distance / 1000)}km`}
+                                        <label>Total distance:</label>
+                                        <div>
+                                            {`${this.handleNumbers(userStats[type].distance / 1000)}km`}
+                                        </div>
                                     </li>
                                     <li>
-                                        {`Total time: ${this.handleNumbers(userStats[type].duration / 3600)} hours`}
+                                        <label>Total time:</label>
+                                        <div>
+                                            {`${this.handleNumbers(userStats[type].duration / 3600)} hours`}
+                                        </div>
                                     </li>
                                     <li>
-                                        {`Average pace: ${this.handleNumbers(userStats[type].speed * 3.6)}km/h`}
+                                        <label>Average pace:</label>
+                                        <div>
+                                            {`${this.handleNumbers(userStats[type].speed * 3.6)}km/h`}
+                                        </div>
                                     </li>
                                 </ul>
                                 <br />

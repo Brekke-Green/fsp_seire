@@ -16,13 +16,42 @@
 .workout-item {
     background-color: white;
     border: 1px solid transparent;
-    border-radius: 3px;
+    border-radius: 5px;
     margin: 12px 0px 12px 0px ;
 }
 
 .workout-item-title {
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 800;
+    padding-top: 8px;
+    padding-left: 8px;
+}
+
+.workout-item-data-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.workout-item-data-list > li {
+    display: flex;
+    flex-direction: column;
+}
+
+.workout-item-data-label {
+    display: flex;
+    font-size: 18px;
+    color: #494950;
+    justify-content: center;
+}
+
+.workout-item-data {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.workout-feed-container a {
+    padding-left: 8px;
 }
 
 #workout-delete-button :hover {

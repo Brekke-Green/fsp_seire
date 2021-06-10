@@ -47,24 +47,38 @@ class WorkoutItem extends React.Component {
             <div id="workout-feed-section">
                 <div className="dashboard-title">WORKOUT FEED</div>
                 <div className="workout-feed-container">
-                    {Object.values(workouts).map(workout => (
+                    {Object.values(workouts).reverse().map(workout => (
                         <div key={workout.id * 10} className="workout-item">
-                            <label className="workout-item-title">{`${workout.route.route_name} - ${workout.user.username}`}</label>
-                                <ul>
+                            <label className="workout-item-title">{`${workout.user.username} - ${workout.route.route_name}`}</label>
+                                <br />
+                                <ul className="workout-item-data-list">
                                     <li>
-                                        {`Type: ${workout.workout_type.toUpperCase()}`}
+                                        <label className="workout-item-data-label">Type:</label>
+                                        <div className="workout-item-data">
+                                            {`${workout.workout_type.toUpperCase()}`}
+                                        </div>
                                     </li>
                                     <li>
-                                        {`Distance: ${this.handleNumbers(routes[workout.route_id]['distance'] / 1000)}km`}
+                                        <label className="workout-item-data-label">Distance:</label>
+                                        <div className="workout-item-data">
+                                            {`${this.handleNumbers(routes[workout.route_id]['distance'] / 1000)}km`}
+                                        </div>
                                     </li>
                                     <li>
-                                        {`Time: ${this.handleTime(workout.duration)}`}
+                                        <label className="workout-item-data-label">Time:</label>
+                                        <div className="workout-item-data">
+                                            {`${this.handleTime(workout.duration)}`}
+                                        </div>
                                     </li>
                                     <li>
-                                        {`Pace: ${this.handleNumbers(routes[workout.route_id]['distance']/workout.duration)}m/s`}
+                                        <label className="workout-item-data-label">Pace:</label>
+                                        <div className="workout-item-data">
+                                            {`${this.handleNumbers(routes[workout.route_id]['distance']/workout.duration)}m/s`}
+                                        </div>
                                     </li>
-                                    <br />
-                                </ul>  
+                                    
+                                </ul>
+                                <br />
                                 {this.handleEdit(workout.user_id, workout.id)}
                                 {this.handleDelete(workout.user_id, workout.id)}
                         </div>

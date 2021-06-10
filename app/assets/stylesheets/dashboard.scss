@@ -16,9 +16,11 @@
     position: fixed;
     width: 280px;
     display: flex;
-    top: 115px;
+    top: 136px;
     background-color: white;
     justify-content: center;
+    border: 1px solid white;
+    border-radius: 5px;
 }
 
 #workout-feed-section {
@@ -28,7 +30,7 @@
     flex-direction: column;
     position: relative;
     left: 25%;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 #personal-links-section {
@@ -36,20 +38,22 @@
     width: 25%;
     display: flex;
     flex-direction: column;
-    top: 115px;
+    top: 136px;
     right: 0;
-}
-
-.profile-username-title {
-    font-size: 26px;
-    font-weight: 800;
-    display: flex;
-    justify-content: center;
 }
 
 .dashboard-title {
     font-size: 24px;
     font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.profile-username-title {
+    font-size: 20px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
 }
 
 .profile-section-container {
@@ -58,10 +62,30 @@
     flex-direction: column;
 }
 
+.profile-stats-list {
+    border-top: 1px solid lightgray;
+    padding-top: 10px;
+}
+
+.profile-stats-type {
+    font-weight: 800;
+}
+
+.profile-stats-list li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .personal-links-container ul > * {
     display: flex;
     border-bottom: 1px solid lightgray;
     width: 280px;
     padding: 40px;
+    font-weight: 800;
+}
+
+.personal-links-container ul li i {
+    padding-right: 10px;
 }
 
