@@ -5,16 +5,39 @@ class SessionForm extends React.Component {
         super(props) 
         this.state = {
             email: '',
+            username: '',
             password: '',
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSignIn = this.handleSignIn.bind(this);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!prevProps.session) { return }
+        if (prevProps.session.id === null && this.props.session.id !== null) {
+            this.props.history.push('/dashboard');
+        }
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
-        this.props.history.push('/dashboard');
+    }
+
+    handleSignIn() {
+        if (this.props.formType === "signup") {
+            return (
+                <div className="login-input-container">
+                    <input type="text" 
+                        value={this.state.username}
+                        placeholder="Username"
+                        onChange={this.update("username")}
+                        className="login-input"
+                    />
+                </div>
+            )
+        }
     }
 
     update(field) {
@@ -66,15 +89,16 @@ class SessionForm extends React.Component {
                                 <input type="text" 
                                     value={this.state.email}
                                     placeholder="Email"
-                                    onChange={this.update('email')}
+                                    onChange={this.update("email")}
                                     className="login-input"
                                 />
                             </div>
+                            {this.handleSignIn()}
                             <div className="login-input-container">
                                 <input type="password" 
                                     value={this.state.password}
                                     placeholder="Password"
-                                    onChange={this.update('password')}
+                                    onChange={this.update("password")}
                                     className="login-input"
                                 />
                             </div>
