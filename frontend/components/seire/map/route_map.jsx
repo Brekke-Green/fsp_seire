@@ -41,6 +41,7 @@ class Map extends React.PureComponent {
         this.speedFactor = 50;
         this.data = {};
         this.looped = false;
+        this.routeCreatedFlag = false;
     }
 
     componentDidMount() {
@@ -147,6 +148,7 @@ class Map extends React.PureComponent {
 
         if (prevState.route !== that.state.route) {
             this.props.submitRoute(this.state.route);
+            this.routeCreatedFlag = true;
         }
     }
 
@@ -308,7 +310,8 @@ class Map extends React.PureComponent {
 
     render() {
         const { lng, lat, zoom } = this.state;
-        
+        let routeCreatedMessage = ""
+        if (this.routeCreatedFlag) { routeCreatedMessage = "New Route Created!"}
         return (
             <div className="">
                 <div className="sidebar">
@@ -320,6 +323,7 @@ class Map extends React.PureComponent {
                         <button onClick={this.handleCreateLoop}>Create Loop</button>
                         {this.renderErrors()}
                     </form>
+                    <div>{routeCreatedMessage}</div>
                 </div>
                 <div ref={this.mapContainer} className="map-container" style={{width:'100%', height:'100vh'}}/>
             </div>
