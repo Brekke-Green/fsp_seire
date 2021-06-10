@@ -1,0 +1,30 @@
+.workout-form-title {
+    font-size: 34px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+}
+
+.workout-form-box {
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.workout-form-time-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.workout-form-time-inputs > * {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.workout-form-submit-container {
+    display: flex;
+    justify-content: center;
+}

@@ -72,6 +72,7 @@ class WorkoutForm extends React.Component {
                     <div className="workout-form-title">Manual Workout Entry</div>
                     <form onSubmit={this.handleSubmit} className='workout-form-box'>
                         <label>Workout type:</label>
+                        <br />
                         <select name="workout_type" onChange={this.handleWorkoutType}>
                             <option value="run">Running</option>
                             <option value="walk">Walking</option>
@@ -80,19 +81,24 @@ class WorkoutForm extends React.Component {
                         </select>
                         <br />
                         <label>Choose a route:</label>
+                        <br />
                         <select name="route" id="routes-select" onChange={this.handleSelection}>
                             {Object.values(routes).map(route => (
                                 <option key={route.id * 10} value={route.id}>{`${route['route_name']}: ${this.handleNumbers(route['distance'] / 1000)}km`}</option>
                             ))}
                         </select>
                         <br />
-                        <label>Hours:</label>
-                        <input className="workout-input hours" name="hours" type="number" min="0" max="24" placeholder="0" onChange={this.handleUpdate('hours')}/>
-                        <label>Minutes:</label>
-                        <input className="workout-input minutes" name="minutes" type="number" min="0" max="60" placeholder="0" onChange={this.handleUpdate('minutes')}/>
-                        <label>Seconds:</label>
-                        <input className="workout-input seconds" name="seconds" type="number" min="0" max="60" placeholder="0" onChange={this.handleUpdate('seconds')}/>
-                        <button>Track Workout</button>
+                        <div className="workout-form-time-inputs">
+                            <label>Hours:</label>
+                            <input className="workout-input hours" name="hours" type="number" min="0" max="24" placeholder="0" onChange={this.handleUpdate('hours')}/>
+                            <label>Minutes:</label>
+                            <input className="workout-input minutes" name="minutes" type="number" min="0" max="60" placeholder="0" onChange={this.handleUpdate('minutes')}/>
+                            <label>Seconds:</label>
+                            <input className="workout-input seconds" name="seconds" type="number" min="0" max="60" placeholder="0" onChange={this.handleUpdate('seconds')}/>
+                        </div>
+                        <div className="workout-form-submit-container">
+                            <button className="workout-form-submit">Track Workout</button>
+                        </div>
                     </form>
                 </div>
             </div>
