@@ -2,7 +2,7 @@
 # exit on error
 set -o errexit
 
-npm start &&
+npm install &&
 bundle install &&
 bundle exec rake assets:precompile &&
 bundle exec rake assets:clean &&
