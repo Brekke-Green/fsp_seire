@@ -20,4 +20,5 @@ services:
     name: frontend
     env: static
     buildCommand: "webpack"
-    staticPublishPath: "./"
+    staticPublishPath: "./app/assets/javascripts/bundle.js"
+    
