@@ -27,12 +27,12 @@
     "test": "test"
   },
   "engines": {
-    "node": "16.5.0",
+    "node": "16.x",
     "npm": "7.19.1"
   },
   "scripts": {
     "postinstall": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend",
     "start": "webpack --watch --mode=development"
   },
   "repository": {

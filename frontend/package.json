@@ -1,0 +1,49 @@
+{
+    "name": "seire",
+    "private": true,
+    "dependencies": {
+      "@babel/core": "^7.13.10",
+      "@babel/preset-env": "^7.13.10",
+      "@babel/preset-react": "^7.12.13",
+      "@mapbox/mapbox-gl-draw": "^1.2.2",
+      "babel-loader": "^8.2.2",
+      "mapbox-gl": "^2.2.0",
+      "react": "^17.0.1",
+      "react-dom": "^17.0.1",
+      "react-redux": "^7.2.2",
+      "react-router-dom": "^5.2.0",
+      "redux": "^4.0.5",
+      "redux-logger": "^3.0.6",
+      "redux-thunk": "^2.3.0",
+      "webpack": "^5.26.0",
+      "webpack-cli": "^4.5.0",
+      "worker-loader": "^3.0.8"
+    },
+    "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+    "version": "1.0.0",
+    "main": "index.js",
+    "directories": {
+      "lib": "lib",
+      "test": "test"
+    },
+    "engines": {
+      "node": "16.5.0",
+      "npm": "7.19.1"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "BUILD_PATH='../public' react-scripts build"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Brekke-Green/fsp_seire.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/Brekke-Green/fsp_seire/issues"
+    },
+    "homepage": "https://github.com/Brekke-Green/fsp_seire#readme"
+  }
+  
