@@ -7,7 +7,8 @@ import workoutsReducer from './workout_reducer';
 const entitiesReducer = combineReducers({
     users: usersReducer,
     routes: mapRouteReducer,
-    workouts: workoutsReducer
+    workouts: workoutsReducer,
+    session: sessionReducer
 })
 
 export default entitiesReducer;
